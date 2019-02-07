@@ -21,8 +21,7 @@ project.  That means that you will:
 1. Fork this project to your own GitHub account, or clone it to a local repository.        (Don't know what we mean by "fork" and "clone"? Check the 
    [GitHub glossary](https://help.github.com/articles/github-glossary/) to learn the lingo.)
 
-2. Create a new subfolder for your code and other assets.  Please name the folder
-   according to the same naming conventions that you used when you submitted your final paper.  That is:
+2. If necessary, create a new subfolder for your code and other assets.  (We have already created folders and template README.md files for all accepted, contributed     papers.) Please name the folder according to the same naming conventions that you used when you submitted your final paper.  That is:
 
         sessionNumber-YEAR-surname
 
@@ -31,7 +30,8 @@ project.  That means that you will:
         2822-2019-Smith
 
 3. Use a pull request to submit your new content.  One of the project owners will
-   review the change and merge it with the rest of the project.  Reviewers will check only that you have followed the recommended structure.  For these contributions, the reviewer is not checking for quality or completeness of the content.  As the paper author, we assume that you know what your readers need.
+   review the change and merge it with the rest of the project.  Reviewers will check only that you have followed the recommended structure (adding/changing content
+   in the folder for your paper).  For these contributions,the reviewer is not checking for quality or completeness of the content.  As the paper author, we assume that you know what your readers need.
 
 Consult [GitHub Help](https://help.github.com/articles/about-pull-requests/) for more information on using pull requests.
 
