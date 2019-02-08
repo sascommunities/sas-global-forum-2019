@@ -1,6 +1,6 @@
 # Working with Big Data in SAS                                                          
 
-Download and unzip [3220-2019-Jordan.zip](./3220-2019-Jordan/3220-2019-Jordan.zip)
+Download and unzip [3220-2019-Jordan.zip](../3220-2019-Jordan/3220-2019-Jordan.zip)
 
 ## Contents of ZIP file
 
