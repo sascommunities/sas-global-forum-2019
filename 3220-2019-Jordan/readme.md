@@ -1,6 +1,11 @@
 # Working with Big Data in SAS                                                          
 
-This is a placeholder for source code and other supporting materials.  Authors are invited to add their materials and overwrite this README! See [the contributor guidelines](../CONTRIBUTING.md) for details. 
+Download and unzip the 3220-2019-Jordan.zip 
+
+## Contents of ZIP file
+
+cre8data.sas - creates the datasets required
+WorkingWithBigDataInSAS.sas - contains the code used to create the paper & presentation
 
 ## Additional information
 
