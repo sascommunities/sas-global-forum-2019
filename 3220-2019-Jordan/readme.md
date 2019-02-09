@@ -1,11 +1,11 @@
 # Working with Big Data in SAS                                                          
 
-Download and unzip [3220-2019-Jordan.zip](../3220-2019-Jordan/3220-2019-Jordan.zip)
 
-## Contents of ZIP file
+## Get the data and code
 
 cre8data.sas - creates the datasets required
 WorkingWithBigDataInSAS.sas - contains the code used to create the paper & presentation
+Or download the ZIP archive [3220-2019-Jordan.zip](../3220-2019-Jordan/3220-2019-Jordan.zip) containing both files. 
 
 ## Additional information
 
