@@ -3,9 +3,9 @@
 
 ## Get the data and code
 
-- WorkingWithBigDataInSAS.sas - contains the code used to create the paper & presentation
-- cre8data.sas - creates the datasets required
-- Or download the ZIP archive [3220-2019-Jordan.zip](../3220-2019-Jordan/3220-2019-Jordan.zip) containing both files. 
+- [WorkingWithBigDataInSAS.sas](../WorkingWithBigDataInSAS.sas) - contains the code used to create the paper & presentation
+- [cre8data.sas](../cre8data.sas) - creates the datasets required
+- [3220-2019-Jordan.zip](../3220-2019-Jordan/3220-2019-Jordan.zip) ZIP archive containing both files listed above. 
 
 ## Additional information
 
