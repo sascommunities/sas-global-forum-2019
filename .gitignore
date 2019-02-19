@@ -126,7 +126,7 @@ dmypy.json
 ### Python Patch ###
 .venv/
 
-# Docker
+# CAS
 *.cert 
 *.pem 
 *.crt
