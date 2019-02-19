@@ -125,3 +125,10 @@ dmypy.json
 
 ### Python Patch ###
 .venv/
+
+# Docker
+*.cert 
+*.pem 
+*.crt
+.authinfo
+.DS_Store
