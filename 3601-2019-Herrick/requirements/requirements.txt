@@ -1,0 +1,12 @@
+numpy
+jupyter
+pyzmq
+scipy
+pandas==0.23.4
+matplotlib
+seaborn
+sympy
+bokeh
+requests
+requests-oauthlib
+rise
