@@ -28,11 +28,15 @@ RUN chgrp ds /home/ds/.authinfo
 RUN chgrp ds /home/ds/cascert.pem
 
 ADD /security/vault-deployTarget-ca.crt /etc/pki/ca-trust/source/anchors/
+ADD /security/httpproxy-deployTarget-ca.crt /etc/pki/ca-trust/source/anchors/
 RUN update-ca-trust extract
 
 # add the python module we'll be running.
 ADD /modules/Analysis.AnalyticsModule /home/ds/code/Analysis.AnalyticsModule
 RUN pip3.7 install -e '/home/ds/code/Analysis.AnalyticsModule'
+
+# ADD /modules/python-swat /home/ds/code/python-swat
+# RUN pip3.7 install -e '/home/ds/code/python-swat'
 
 RUN jupyter-nbextension install rise --py --sys-prefix
 RUN jupyter-nbextension enable rise --py --sys-prefix
