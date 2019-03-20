@@ -3,7 +3,7 @@ Can you easily tell the day of the week on which the most sales for a store item
 
 ## Additional information
 
-Find the README.txt in the zip file for details.
+See README.txt for detailed instructions.
 
 ## Support contact(s)
 
