@@ -18,12 +18,12 @@ Find the full paper online with the [SAS Global Forum proceedings](https://www.s
 
 ## Support contact(s)
 
-Sanjay Matange
-sanjaymatange@gmail.com
+Sanjay Matange,
+sanjaymatange@gmail.com,
 https://make-a-graph.com/
 
-Dan Heath
-SAS Institute, Inc.
-Dan.Heath@sas.com
+Dan Heath,
+SAS Institute, Inc.,
+Dan.Heath@sas.com,
 https://blogs.sas.com/content/graphicallyspeaking
                                                                                                                                                                                                                                                                                                                                                                                   
