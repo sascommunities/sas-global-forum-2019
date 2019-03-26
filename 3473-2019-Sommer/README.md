@@ -1,1 +1,13 @@
-# Understanding, Tracking, and Visualizing Decisions with SAS  Viya                                                                                     This is a placeholder for source code and other supporting materials.  Authors are invited to add their materials and overwrite this README! See [the contributor guidelines](../CONTRIBUTING.md) for details. ## Additional informationFind the full paper online with the [SAS Global Forum proceedings](https://www.sas.com/en_us/events/sas-global-forum/program/proceedings.html).## Support contact(s)Contact the author with questions, feedback, and lavish praise.                                                                                                                                                                                                                                                                                                                                                                                           
+# Understanding, Tracking, and Visualizing Decisions with SAS  Viya                                                                                     
+
+This project contains supporting materials for my SAS Global Forum paper:
+* **SGF_EXAMPLE_CODE.sas**   You will need to include this file of macro definitions prior to executing any of the macros presented in the paper
+
+## Additional information
+
+Find the full paper online with the [SAS Global Forum proceedings](https://www.sas.com/en_us/events/sas-global-forum/program/proceedings.html).
+
+## Support contact(s)
+
+Contact the author with questions, feedback, and lavish praise.
+Cal.Sommer@sas.com
