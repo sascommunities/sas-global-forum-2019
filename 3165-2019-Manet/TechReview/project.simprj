@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><project input_data_directory="" result_directory="results">
+<model file="model0.simmdl"/>
+<experiment file="experiment1.simexp"/>
+<experiment file="experiment3.simexp"/>
+<experiment file="experiment2.simexp"/>
+<factor default_level="5" label="" name="WorkWeek_Duration" role="CATEGORICAL" type="INTEGER"/>
+<factor default_level="5" label="" name="WorkWeek_Num_Architect_TR" role="CATEGORICAL" type="INTEGER"/>
+<factor default_level="2" label="" name="WorkWeek_IndividualTRCapacity" role="CATEGORICAL" type="INTEGER"/>
+<factor default_level="200" label="" name="WorkWeek_TROverloadThreshold" role="CATEGORICAL" type="INTEGER"/>
+<factor default_level="Min==0;Max==3;Mode==1.5" label="" name="Affected_Architect_TR" role="CATEGORICAL" type="TEXT"/>
+<factor default_level="Min==0;Max==3;Mode==1.5" label="" name="Arrival_TR_EH" role="CATEGORICAL" type="TEXT"/>
+<factor default_level="0" label="" name="TechReviewPassProbability" role="CATEGORICAL" type="DOUBLE"/>
+<factor default_level="0" label="" name="PreScreenPassProbability" role="CATEGORICAL" type="DOUBLE"/>
+<factor default_level="Min==0.03;Max==0.09;Mode==0.05" label="" name="PreScreenTime" role="CATEGORICAL" type="TEXT"/>
+<factor default_level="" label="" name="DesignPointLabel" role="CONTINUOUS" type="TEXT"/>
+<factor default_level="Min==10;Max==30;Mode==25" label="" name="Architect_MTBF" role="CATEGORICAL" type="TEXT"/>
+<factor default_level="Min==6;Max==10;Mode==7" label="" name="Architect_TTR" role="CATEGORICAL" type="TEXT"/>
+<response goal="None" label="" name="N_TR_Serviced">
+<target_value>NaN</target_value>
+<target_value>NaN</target_value>
+</response>
+<response goal="None" label="" name="N_Preempted">
+<target_value>NaN</target_value>
+<target_value>NaN</target_value>
+</response>
+<response goal="None" label="" name="N_Carryover">
+<target_value>NaN</target_value>
+<target_value>NaN</target_value>
+</response>
+<response goal="Match Target" label="" name="Count">
+<target_value>NaN</target_value>
+<target_value>NaN</target_value>
+</response>
+<response goal="None" label="" name="N_Expedited">
+<target_value>NaN</target_value>
+<target_value>NaN</target_value>
+</response>
+</project>

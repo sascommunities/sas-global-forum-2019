@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><design_matrix>
+<defaults autosave="false" end_time="Infinity" output_filename="expResults" overwriteAllowed="false" replication_count="1" start_time="0.0" submitToRemote="false"/>
+<factor id="f0" name="WorkWeek_Duration"/>
+<factor id="f1" name="WorkWeek_Num_Architect_TR"/>
+<factor id="f2" name="WorkWeek_IndividualTRCapacity"/>
+<factor id="f3" name="WorkWeek_TROverloadThreshold"/>
+<factor id="f4" name="Affected_Architect_TR"/>
+<factor id="f5" name="Arrival_TR_EH"/>
+<factor id="f6" name="TechReviewPassProbability"/>
+<factor id="f7" name="PreScreenPassProbability"/>
+<factor id="f8" name="PreScreenTime"/>
+<factor id="f9" name="DesignPointLabel"/>
+<factor id="f10" name="Architect_MTBF"/>
+<factor id="f11" name="Architect_TTR"/>
+<response id="r0" name="N_TR_Serviced" summarizer="com.sas.analytics.simulation.designexperiment.Average"/>
+<response id="r1" name="N_Preempted" summarizer="com.sas.analytics.simulation.designexperiment.Average"/>
+<response id="r2" name="N_Carryover" summarizer="com.sas.analytics.simulation.designexperiment.Average"/>
+<response id="r3" name="N_Expedited" summarizer="com.sas.analytics.simulation.designexperiment.Average"/>
+<point end_time="400.0" f0="5" f1="5" f10="Min==10;Max==30;Mode==25" f11="Min==6;Max==10;Mode==7" f2="2" f3="200" f4="Min==0;Max==3;Mode==1.5" f5="Min==0;Max==3;Mode==1" f6="0.464" f7="0.9" f8="Min==0.03;Max==0.09;Mode==0.05" f9="Baseline" name="Baseline (1y)" r0="194.8" r1="4.0" r2="27.2" r3="18.1" replication_count="10" start_time="0.0"/>
+<point end_time="400.0" f0="5" f1="5" f10="Min==10;Max==30;Mode==25" f11="Min==6;Max==10;Mode==7" f2="3" f3="200" f4="Min==0;Max==3;Mode==1.5" f5="Min==0;Max==3;Mode==1" f6="0.464" f7="0.9" f8="Min==0.03;Max==0.09;Mode==0.05" f9="P1" name="P1" r0="194.8" r1="0.2" r2="27.0" r3="18.1" replication_count="10" start_time="0.0"/>
+<point end_time="400.0" f0="5" f1="5" f10="Min==10;Max==30;Mode==25" f11="Min==6;Max==10;Mode==7" f2="4" f3="200" f4="Min==0;Max==3;Mode==1.5" f5="Min==0;Max==3;Mode==1" f6="0.464" f7="0.9" f8="Min==0.03;Max==0.09;Mode==0.05" f9="P2" name="P2" r0="194.8" r1="0.0" r2="27.0" r3="18.1" replication_count="10" start_time="0.0"/>
+<point end_time="400.0" f0="5" f1="5" f10="Min==10;Max==30;Mode==25" f11="Min==6;Max==10;Mode==7" f2="5" f3="200" f4="Min==0;Max==3;Mode==1.5" f5="Min==0;Max==3;Mode==1" f6="0.464" f7="0.9" f8="Min==0.03;Max==0.09;Mode==0.05" f9="P3" name="P3" r0="198" r1="0" r2="29" r3="23" replication_count="10" start_time="0.0"/>
+<point end_time="400.0" f0="5" f1="5" f10="Min==10;Max==30;Mode==25" f11="Min==6;Max==10;Mode==7" f2="6" f3="200" f4="Min==0;Max==3;Mode==1.5" f5="Min==0;Max==3;Mode==1" f6="0.464" f7="0.9" f8="Min==0.03;Max==0.09;Mode==0.05" f9="P4" name="P4" r0="" r1="" r2="" r3="" replication_count="10" start_time="0.0"/>
+</design_matrix>
