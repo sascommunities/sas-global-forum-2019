@@ -1,0 +1,17 @@
+{
+    "properties": {
+        "analytics_config": "/home/ds/custom/config/wh_analytics.json",
+        "myFile": "${myFile}"
+    },
+    
+    "tasks": {},
+    "name": "WH_60M -- WH Analytics DAG",
+    "concurrency": {
+        "limit": 1
+    },
+    "connections": [],
+    "finalizer": {
+        "maxTime": "5 minutes",
+        "module": "sascyber"
+    }
+}

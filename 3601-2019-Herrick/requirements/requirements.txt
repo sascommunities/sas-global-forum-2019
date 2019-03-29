@@ -10,3 +10,4 @@ bokeh
 requests
 requests-oauthlib
 rise
+wget

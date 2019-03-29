@@ -35,9 +35,6 @@ RUN update-ca-trust extract
 ADD /modules/Analysis.AnalyticsModule /home/ds/code/Analysis.AnalyticsModule
 RUN pip3.7 install -e '/home/ds/code/Analysis.AnalyticsModule'
 
-# ADD /modules/python-swat /home/ds/code/python-swat
-# RUN pip3.7 install -e '/home/ds/code/python-swat'
-
 RUN jupyter-nbextension install rise --py --sys-prefix
 RUN jupyter-nbextension enable rise --py --sys-prefix
 
@@ -45,6 +42,9 @@ EXPOSE 8888
 RUN echo "ds ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d
 USER ds
 RUN mkdir -p /home/ds/notebooks
+RUN mkdir -p /home/ds/datasets
+RUN mkdir -p /home/ds/logs
+RUN mkdir -p /home/ds/custom
 RUN mkdir -p /home/ds/.jupyter
 RUN echo "c.NotebookApp.token = u''" >> /home/ds/.jupyter/jupyter_notebook_config.py
 ENV HOME=/home/ds

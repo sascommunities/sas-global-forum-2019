@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "formatters": {
+    "f": {
+      "format": "%(asctime)s:\t%(process)d:\t%(filename)s:\t%(levelname)s:\t[%(name)s:%(filename)s:%(lineno)s - %(funcName)s()] %(message)s",
+      "datefmt": "%Y-%m-%d::%H:%M:%S"
+    }
+  },
+  "handlers": {
+    "h": {
+      "class": "logging.StreamHandler",
+      "formatter": "f",
+      "level": "DEBUG",
+      "stream": "ext://sys.stdout"
+    },
+    "h2": {
+      "class": "logging.FileHandler",
+      "formatter": "f",
+      "level": "INFO",
+      "filename": "/home/ds/logs/sascyber_timing.log"
+    },
+    "h3": {
+      "class": "logging.FileHandler",
+      "formatter": "f",
+      "level": "DEBUG",
+      "filename": "/home/ds/logs/sascyber.log"
+    }
+  },
+  "loggers": {
+    "sascyber": {
+      "level": "DEBUG",
+      "handlers": [
+        "h3"
+      ],
+      "propagate": false
+    },
+    "timing": {
+      "level": "INFO",
+      "handlers": [
+        "h2"
+      ],
+      "propagate": false
+    }
+  }
+}

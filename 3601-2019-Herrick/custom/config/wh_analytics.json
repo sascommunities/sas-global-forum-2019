@@ -1,0 +1,193 @@
+{
+    "properties": {
+        "analytics": {
+            "analytics_type": "sascyber.analytics",
+            "custom_analytics_allowed": true,
+            "custom_analytics_path": "/home/ds/custom/wh/"
+        },
+        "module": "sascyber",
+        "swat_trace": "False",
+        "swat_messages": "False",
+        "ae_caslib": "AE",
+        "ev_caslib": "EV",
+        "ed_caslib": "ED",
+        "hist_caslib": "HIST",
+        "models_caslib": "CYBER_MODELS",
+        "train_caslib": "TRAINING_DATA",
+        "lookups_caslib": "LOOKUPS",
+        "se_caslib": "SE",
+        "input_caslib": "WH",
+        "import_options": {
+            "filetype": "sashdat",
+            "stripblanks": "true",
+            "getnames": "false",
+            "vars": [
+                {
+                    "name": "AuthenticationPackage",
+                    "type": "varchar"
+                },
+                {
+                    "name": "Destination",
+                    "type": "varchar"
+                },
+                {
+                    "name": "DomainName",
+                    "type": "varchar"
+                },
+                {
+                    "name": "EventID",
+                    "type": "int64"
+                },
+                {
+                    "name": "FailureReason",
+                    "type": "varchar"
+                },
+                {
+                    "name": "LogHost",
+                    "type": "varchar"
+                },
+                {
+                    "name": "LogonID",
+                    "type": "varchar"
+                },
+                {
+                    "name": "LogonType",
+                    "type": "double"
+                },
+                {
+                    "name": "LogonTypeDescription",
+                    "type": "varchar"
+                },
+                {
+                    "name": "ParentProcessID",
+                    "type": "varchar"
+                },
+                {
+                    "name": "ParentProcessName",
+                    "type": "varchar"
+                },
+                {
+                    "name": "ProcessID",
+                    "type": "varchar"
+                },
+                {
+                    "name": "ProcessName",
+                    "type": "varchar"
+                },
+                {
+                    "name": "ServiceName",
+                    "type": "varchar"
+                },
+                {
+                    "name": "Source",
+                    "type": "varchar"
+                },
+                {
+                    "name": "Status",
+                    "type": "varchar"
+                },
+                {
+                    "name": "SubjectDomainName",
+                    "type": "varchar"
+                },
+                {
+                    "name": "SubjectLogonID",
+                    "type": "varchar"
+                },
+                {
+                    "name": "SubjectUserName",
+                    "type": "varchar"
+                },
+                {
+                    "name": "Time",
+                    "type": "int64"
+                },
+                {
+                    "name": "UserName",
+                    "type": "varchar"
+                },
+                {
+                    "name": "occurredTime",
+                    "type": "varchar"
+                }
+            ]
+        },
+        "index_vars": [
+            "UserName",
+            "EventID"
+        ],
+        "aggregation_fields": [
+            "UserName"
+        ],
+        "comparison_fields": [],
+        "resolution_server_ips_limit": 100,
+        "filters": {
+            "EventsFailedLogins": {
+                "input": "{intable}",
+                "clause": "EventID = 4625",
+                "output": "{intable}_FAILED_LOGINS"
+            }
+        }
+    },
+    "tasks": {
+        "NFLoadTable": {
+            "options": {
+                "analyticsList": [
+                    {
+                        "support.LoadTable": {
+                            "input_file": "${myFile}",
+                            "input_caslib": "${input_caslib}",
+                            "input_import_options": "${import_options}",
+                            "index_vars": "${index_vars}"
+                        }
+                    }
+                ]
+            }
+        },
+        "ResolveEventsFailedLogins": {
+            "options": {
+                "analyticsList": [
+                    {
+                        "support.ResolveFilters": {
+                            "input_file": "${myFile}",
+                            "input_caslib": "${input_caslib}",
+                            "input_import_options": "${import_options}",
+                            "filter": "EventsFailedLogins",
+                            "index_vars": "${index_vars}"
+                        }
+                    }
+                ]
+            }
+        },
+        "WindowsHostFailedLoginsAnalytic": {
+            "options": {
+                "analyticsList": [
+                    {
+                        "whFailedLogins": {
+                            "input_file": "${myFile}",
+                            "input_caslib": "${input_caslib}",
+                            "input_import_options": "${import_options}",
+                            "comparison_fields": "${comparison_fields}",
+                            "filter": "EventsFailedLogins",
+                            "threshold": 0.9,
+                            "event_type_id": 2801101,
+                            "cleanup": true
+                        }
+                    }
+                ]
+            }
+        },
+        "Finalizer": {
+            "options": {
+                "analyticsList": [
+                    {
+                        "support.Finalizer": {
+                            "processed_file": "${myFile}",
+                            "conn_mandatory": false
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
