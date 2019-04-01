@@ -135,3 +135,4 @@ dmypy.json
 *.crt
 .authinfo
 .DS_Store
+authinfo
