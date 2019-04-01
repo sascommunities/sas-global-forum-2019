@@ -14,6 +14,6 @@ Find the full paper online with the [SAS Global Forum proceedings](https://www.s
 
 ## Support contact(s)
 
-Damian Herrick
-SAS Institute, Inc.
+Damian Herrick  
+SAS Institute, Inc.  
 [Damian.Herrick@sas.com](Damian.Herrick@sas.com)
