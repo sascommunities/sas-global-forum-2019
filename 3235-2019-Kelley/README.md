@@ -12,8 +12,8 @@ Find the full paper online with the [SAS Global Forum proceedings](https://www.s
 
 Contact the author with comments and questions:                                                                                                                                                                                                                                                                                                                                                                                         
 
-  &nbsp;&nbsp;David W. Kelley  
-  &nbsp;&nbsp;SAS Institute  
-  &nbsp;&nbsp;100 SAS Campus Drive  
-  &nbsp;&nbsp;Cary, NC 27513-2414  
-  &nbsp;&nbsp;David.Kelley@sas.com
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;David W. Kelley  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SAS Institute  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100 SAS Campus Drive  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cary, NC 27513-2414  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;David.Kelley@sas.com
