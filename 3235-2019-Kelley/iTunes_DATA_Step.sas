@@ -97,9 +97,9 @@
                 Kind  $
                 Equalizer
                 Comments  $
-                Plays  $
+                Plays
                 Last_Played
-                Skips  $
+                Skips
                 Last_Skipped
                 My_Rating  $
                 Location  $
