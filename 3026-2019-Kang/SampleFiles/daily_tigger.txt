@@ -1,0 +1,19 @@
+[
+            {
+                    "name": "Daily Trigger",
+                    "type":"TIMEEVENT",
+                    "hours":"09",
+                    "minutes" : "30",
+                    "timezone": "America/New_York",
+                    "maxOccurrence" : "-1",
+                    "recurrence" :
+                    {
+                        "type" : "daily",
+                        "startDate": "2018-12-28",
+                        "skipCount": 1,
+                        "daysOfWeek":[],
+                        "dayOfMonth":1,
+                        "dates":[]
+                     }
+            }
+]

@@ -1,0 +1,11 @@
+SAS2986-2019: Mastering Parameters in SAS® Visual Analytics
+
+To load these reports into Visual Analytics, perform the following steps:
+
+1. Load sashelp.cars, va_dummy_data_body, and air_forecast as promoted CAS tables in the PUBLIC caslib, or into LASR (VA 7.4). If loading into LASR, ensure that the tables are registered.
+2. Log into Visual Analytics
+3. Enter Report Designer mode
+4. Press Ctrl+Alt+B
+5. Paste the XML code for your version of Visual Analytics into the popup box
+6. Click "Load"
+7. Save the report

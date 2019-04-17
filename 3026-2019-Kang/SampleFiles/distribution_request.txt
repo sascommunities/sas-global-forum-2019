@@ -1,0 +1,14 @@
+{
+  "name": "<distribution_name>",
+  "recipients": [
+    "/identities/users/<username>"
+  ],
+  "reportRequests": [
+     {"reportUri": "/reports/reports/<reportid>"}
+  ],
+  "subject": "<distribution_subject>",
+  "body": "<distribution_body>",
+  "includePdf": "true",
+  "includeScreenplay": "false",
+  "version": 2
+}

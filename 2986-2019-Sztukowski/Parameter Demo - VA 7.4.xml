@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SASReport xmlns="http://www.sas.com/sasreportmodel/bird-3.3.1.20170223_missingValueDisplay" label="Parameter Demo - VA 7.4" createdVersion="3.3.1.20170223_missingValueDisplay" dateCreated="2019-03-17T22:22:55Z" dateModified="2019-03-18T13:40:36Z" createdApplication="SAS Visual Analytics Designer XML 7.4 Hotfix 10" lastModifiedApplication="SAS Visual Analytics Designer 7.4 Hotfix 10" nextUniqueNameIndex="1889">
+	<DataDefinitions>
+		<DataDefinition dataSource="ds2" type="multidimensional" name="dd22">
+			<BusinessItems>
+				<RelationalDataItem name="bi28" base="bi4"/>
+				<RelationalDataItem name="bi36" base="bi12"/>
+			</BusinessItems>
+			<MultidimensionalQuery detail="false">
+				<Axes>
+					<Axis type="row">
+						<BusinessItem ref="bi36"/>
+					</Axis>
+					<Axis type="column">
+						<BusinessItem ref="bi28"/>
+					</Axis>
+				</Axes>
+				<ColumnSortItems>
+					<MeasureSortItem ref="bi36" sortDirection="descending"/>
+					<SortItem ref="bi28" sortDirection="ascending"/>
+				</ColumnSortItems>
+				<RankItems>
+					<RankItem groupBy="bi28" n="pr45" includeTies="true" subset="top" type="count">
+						<RankBy measure="bi36"/>
+					</RankItem>
+				</RankItems>
+			</MultidimensionalQuery>
+		</DataDefinition>
+		<DataDefinition dataSource="ds2" type="multidimensional" name="dd65">
+			<BusinessItems>
+				<RelationalDataItem name="bi66" base="bi3"/>
+				<RelationalDataItem name="bi69" base="bi6"/>
+				<RelationalDataItem name="bi70" base="bi7"/>
+				<RelationalDataItem name="bi95" base="bi93"/>
+				<RelationalDataItem name="bi204" base="bi5"/>
+			</BusinessItems>
+			<MultidimensionalQuery detail="false">
+				<Axes>
+					<Axis type="row">
+						<BusinessItem ref="bi95"/>
+					</Axis>
+					<Axis type="column">
+						<BusinessItem ref="bi66"/>
+					</Axis>
+				</Axes>
+				<ColumnSortItems>
+					<MeasureSortItem ref="bi95" sortDirection="descending"/>
+					<SortItem ref="bi66" sortDirection="ascending"/>
+				</ColumnSortItems>
+			</MultidimensionalQuery>
+		</DataDefinition>
+		<DataDefinition dataSource="ds47" type="relational" name="dd85">
+			<BusinessItems>
+				<RelationalDataItem name="bi90" base="bi55"/>
+			</BusinessItems>
+			<RelationalQuery detail="false">
+				<Axes>
+					<Axis type="column">
+						<BusinessItem ref="bi90"/>
+					</Axis>
+				</Axes>
+				<SortItems>
+					<SortItem ref="bi90" sortDirection="ascending"/>
+				</SortItems>
+			</RelationalQuery>
+		</DataDefinition>
+		<DataDefinition dataSource="ds2" type="relational" name="dd113">
+			<BusinessItems>
+				<RelationalDataItem name="bi121" base="bi7"/>
+			</BusinessItems>
+			<RelationalQuery detail="false">
+				<Axes>
+					<Axis type="column">
+						<BusinessItem ref="bi121"/>
+					</Axis>
+				</Axes>
+				<SortItems>
+					<SortItem ref="bi121" sortDirection="ascending"/>
+				</SortItems>
+			</RelationalQuery>
+		</DataDefinition>
+		<DataDefinition dataSource="ds2" type="relational" name="dd107">
+			<BusinessItems>
+				<RelationalDataItem name="bi142" base="bi5"/>
+				<RelationalDataItem name="bi144" base="bi7"/>
+			</BusinessItems>
+			<RelationalQuery detail="false">
+				<Axes>
+					<Axis type="column">
+						<BusinessItem ref="bi142"/>
+					</Axis>
+				</Axes>
+				<SortItems>
+					<SortItem ref="bi142" sortDirection="ascending"/>
+				</SortItems>
+			</RelationalQuery>
+		</DataDefinition>
+		<DataDefinition dataSource="ds2" type="relational" name="dd101">
+			<BusinessItems>
+				<RelationalDataItem name="bi167" base="bi5"/>
+				<RelationalDataItem name="bi168" base="bi6"/>
+				<RelationalDataItem name="bi169" base="bi7"/>
+			</BusinessItems>
+			<RelationalQuery detail="false">
+				<Axes>
+					<Axis type="column">
+						<BusinessItem ref="bi168"/>
+					</Axis>
+				</Axes>
+				<SortItems>
+					<SortItem ref="bi168" sortDirection="ascending"/>
+				</SortItems>
+			</RelationalQuery>
+		</DataDefinition>
+		<DataDefinition dataSource="ds47" type="relational" name="dd278">
+			<BusinessItems>
+				<RelationalDataItem name="bi283" base="bi274"/>
+			</BusinessItems>
+			<RelationalQuery detail="false">
+				<Axes>
+					<Axis type="column">
+						<BusinessItem ref="bi283"/>
+					</Axis>
+				</Axes>
+			</RelationalQuery>
+		</DataDefinition>
+		<DataDefinition dataSource="ds47" type="relational" name="dd285">
+			<BusinessItems>
+				<RelationalDataItem name="bi297" base="bi276"/>
+			</BusinessItems>
+			<RelationalQuery detail="false">
+				<Axes>
+					<Axis type="column">
+						<BusinessItem ref="bi297"/>
+					</Axis>
+				</Axes>
+			</RelationalQuery>
+		</DataDefinition>
+		<DataDefinition dataSource="ds340" type="relational" name="dd332">
+			<BusinessItems>
+				<RelationalDataItem name="bi592" base="bi348"/>
+			</BusinessItems>
+			<RelationalQuery detail="false">
+				<Axes>
+					<Axis type="column">
+						<BusinessItem ref="bi592"/>
+					</Axis>
+				</Axes>
+				<SortItems>
+					<SortItem ref="bi592" sortDirection="descending"/>
+				</SortItems>
+			</RelationalQuery>
+		</DataDefinition>
+		<DataDefinition dataSource="ds340" type="relational" name="dd635">
+			<BusinessItems>
+				<RelationalDataItem name="bi656" base="bi348"/>
+				<RelationalDataItem name="bi660" base="bi629"/>
+				<RelationalDataItem name="bi661" base="bi632"/>
+				<RelationalDataItem name="bi1789" base="bi1650"/>
+				<RelationalFilterItem label="Show Max Forecast Date" name="bi1853">
+					<EditorProperties>
+						<Property key="complexity">ADVANCED</Property>
+					</EditorProperties>
+					<Expression>cond(ismissing(#{pr323}),eq(${bi1789,raw},1.0),eq(1.0,1.0))</Expression>
+				</RelationalFilterItem>
+			</BusinessItems>
+			<RelationalQuery detail="false">
+				<Axes>
+					<Axis type="column">
+						<BusinessItem ref="bi661"/>
+						<BusinessItem ref="bi660"/>
+					</Axis>
+				</Axes>
+				<AppliedFilters>
+					<DetailFilters>
+						<BusinessItem ref="bi1853"/>
+					</DetailFilters>
+				</AppliedFilters>
+			</RelationalQuery>
+		</DataDefinition>
+		<ParentDataDefinition childQueryRelationship="independent" dataSource="ds340" name="dd570">
+			<BusinessItems>
+				<RelationalDataItem binOption="calendar" maxCardinality="300" minCardinality="150" name="bi574" base="bi341"/>
+				<RelationalDataItem name="bi575" base="bi342"/>
+				<RelationalDataItem name="bi576" base="bi343"/>
+				<RelationalDataItem name="bi578" base="bi345"/>
+				<RelationalDataItem name="bi579" base="bi346"/>
+				<RelationalDataItem name="bi596" base="bi348"/>
+				<RelationalDataItem name="bi1796" base="bi1650"/>
+				<RelationalFilterItem label="Show Max Forecast Date" name="bi1829">
+					<EditorProperties>
+						<Property key="complexity">ADVANCED</Property>
+					</EditorProperties>
+					<Expression>cond(ismissing(#{pr323}),eq(${bi1796,raw},1.0),eq(1.0,1.0))</Expression>
+				</RelationalFilterItem>
+			</BusinessItems>
+			<DataDefinition dataSource="ds340" type="multidimensional" name="dd571">
+				<MultidimensionalQuery detail="false">
+					<Axes>
+						<Axis type="row">
+							<BusinessItem ref="bi575"/>
+							<BusinessItem ref="bi576"/>
+						</Axis>
+						<Axis type="column">
+							<BusinessItem ref="bi574"/>
+						</Axis>
+					</Axes>
+				</MultidimensionalQuery>
+			</DataDefinition>
+			<DataDefinition dataSource="ds340" type="multidimensional" name="dd572">
+				<MultidimensionalQuery detail="false">
+					<Axes>
+						<Axis type="row">
+							<BusinessItem ref="bi579"/>
+							<BusinessItem ref="bi578"/>
+						</Axis>
+						<Axis type="column">
+							<BusinessItem ref="bi574"/>
+						</Axis>
+					</Axes>
+					<ColumnSortItems>
+						<SortItem ref="bi574" sortDirection="ascending"/>
+					</ColumnSortItems>
+				</MultidimensionalQuery>
+			</DataDefinition>
+			<AppliedFilters>
+				<DetailFilters>
+					<BusinessItem ref="bi1829"/>
+				</DetailFilters>
+			</AppliedFilters>
+		</ParentDataDefinition>
+	</DataDefinitions>
+	<DataSources>
+		<DataSource label="CARS" type="relational" name="ds2">
+			<InMemoryResource resourceName="SBIP://METASERVER/Shared Data/SAS Visual Analytics/Autoload/VALIBLA/CARS(Table)" label="HPS.CARS"/>
+			<BusinessItemFolder label="">
+				<DataItem name="bi3" xref="Make"/>
+				<DataItem name="bi4" xref="Model"/>
+				<DataItem name="bi5" xref="Type"/>
+				<DataItem name="bi6" xref="Origin"/>
+				<DataItem name="bi7" xref="DriveTrain"/>
+				<DataItem name="bi8" xref="MSRP"/>
+				<DataItem name="bi9" xref="Invoice"/>
+				<DataItem name="bi10" xref="EngineSize"/>
+				<DataItem name="bi11" xref="Cylinders"/>
+				<DataItem name="bi12" xref="Horsepower" aggregation="average"/>
+				<DataItem name="bi13" xref="MPG_City"/>
+				<DataItem name="bi14" xref="MPG_Highway"/>
+				<DataItem name="bi15" xref="Weight"/>
+				<DataItem name="bi16" xref="Wheelbase"/>
+				<DataItem name="bi17" xref="Length"/>
+				<PredefinedDataItem calculation="totalCount" name="bi18" label="Frequency" format="COMMA"/>
+				<PredefinedDataItem calculation="totalCountPercent" name="bi19" label="Frequency Percent" format="PERCENT20.2"/>
+				<CalculatedItem dataType="double" name="bi93" label="MPG" usage="quantitative" format="COMMA12.1" aggregation="average">
+					<Expression>cond(eq(upper(#{pr92}),&apos;MPG (CITY)&apos;),${bi13,raw},${bi14,raw})</Expression>
+				</CalculatedItem>
+			</BusinessItemFolder>
+		</DataSource>
+		<DataSource label="VA_DUMMY_DATA_BODY" type="relational" name="ds47">
+			<InMemoryResource resourceName="SBIP://METASERVER/Shared Data/SAS Visual Analytics/Autoload/VALIBLA/VA_DUMMY_DATA_BODY(Table)" label="HPS.VA_DUMMY_DATA_BODY"/>
+			<BusinessItemFolder label="">
+				<DataItem name="bi48" xref="dummy_data_body"/>
+				<PredefinedDataItem calculation="totalCount" name="bi49" label="Frequency" format="COMMA"/>
+				<PredefinedDataItem calculation="totalCountPercent" name="bi50" label="Frequency Percent" format="PERCENT20.2"/>
+				<GroupedItem grouping="gr56" label="Variable Select" hidden="false" name="bi55">
+					<GroupingParameters>
+						<GroupingParameter parameter="bi48" variable="var57"/>
+					</GroupingParameters>
+				</GroupedItem>
+				<CalculatedItem dataType="double" name="bi274" label="Gallons" usage="quantitative" format="COMMA12" aggregation="average">
+					<Expression>plus(div(times(#{pr269},#{pr270}),#{pr272}),div(times(#{pr269},minus(1.0,#{pr270})),#{pr271}))</Expression>
+				</CalculatedItem>
+				<CalculatedItem dataType="double" name="bi276" label="Fuel Cost" usage="quantitative" format="COMMA12" aggregation="average">
+					<Expression>times(${bi274,raw},#{pr273})</Expression>
+				</CalculatedItem>
+			</BusinessItemFolder>
+		</DataSource>
+		<DataSource label="AIR_FORECAST" type="relational" name="ds340">
+			<InMemoryResource resourceName="SBIP://METASERVER/Shared Data/SAS Visual Analytics/Autoload/VALIBLA/AIR_FORECAST(Table)" label="HPS.AIR_FORECAST"/>
+			<BusinessItemFolder label="">
+				<DataItem name="bi341" label="Date" xref="DATE"/>
+				<DataItem name="bi342" label="Int&apos;l Airline Travel (Thousands)" xref="AIR" format="COMMA12"/>
+				<DataItem name="bi343" label="Forecast" xref="FORECAST" format="COMMA12"/>
+				<DataItem name="bi344" xref="STD"/>
+				<DataItem name="bi345" xref="L95" format="F12"/>
+				<DataItem name="bi346" xref="U95" format="F12"/>
+				<DataItem name="bi347" xref="RESIDUAL"/>
+				<DataItem name="bi348" label="Forecast Start Date" xref="forecast_date" format="DATE9"/>
+				<PredefinedDataItem calculation="totalCount" name="bi350" label="Frequency" format="COMMA"/>
+				<PredefinedDataItem calculation="totalCountPercent" name="bi351" label="Frequency Percent" format="PERCENT20.2"/>
+				<CalculatedItem dataType="double" name="bi629" label="Year" usage="quantitative" format="F12" aggregation="average">
+					<Expression>year(${bi348,binned})</Expression>
+				</CalculatedItem>
+				<CalculatedItem dataType="double" name="bi632" label="Month" usage="quantitative" format="F12" aggregation="average">
+					<Expression>month(${bi348,binned})</Expression>
+				</CalculatedItem>
+				<DataItem name="bi1650" xref="flag_max_forecast_start_date"/>
+			</BusinessItemFolder>
+		</DataSource>
+	</DataSources>
+	<VisualElements>
+		<Text missingValueDisplay="autolabel" name="ve1450" label="Read Me" selectionDisabled="true">
+			<P class="paragraph1"><Span class="span1">SAS2986-2019: Mastering Parameters in SAS® Visual Analytics</Span></P>
+			<P><Span></Span></P>
+			<P><Span class="span3">This report requires the following data sources:</Span></P>
+			<P><Span class="span4"></Span></P>
+			<P><Span class="span5">1. sashelp.cars</Span></P>
+			<P><Span class="span6">2. va_dummy_data_body</Span></P>
+			<P><Span class="span7">3. air_forecast</Span></P>
+			<P><Span class="span8"></Span></P>
+			<P><Span class="span9">(1) can be found in your sashelp library. (2) and (3) are included with this XML file.</Span></P>
+		</Text>
+		<Prompt ref="pr45" name="ve23" label="Rank Select" selectionDisabled="true">
+			<Title><Span>Rank Select</Span></Title>
+			<Slider orientation="horizontal"/>
+		</Prompt>
+		<Graph name="ve20" data="dd22" label="Model by Average Horsepower">
+			<Title><Span>Model by Average Horsepower</Span></Title>
+<![CDATA[<StatGraph includeMissingDiscrete="true" missingValueDisplay="AUTOLABEL" border="false" width="400" opaque="false" height="400">
+  <Meta>
+    <DynVars>
+      <DynVar name="CATEGORY" required="true" type="CHARACTER" description="CATEGORY_VAR" multiplesAllowed="false">
+        <DefaultValues>
+          <Value>dd22.bi28</Value>
+        </DefaultValues>
+      </DynVar>
+      <DynVar name="RESPONSE" required="true" type="NUMERIC" description="MEASURE_VAR" multiplesAllowed="true">
+        <DefaultValues>
+          <Value>dd22.bi36</Value>
+        </DefaultValues>
+      </DynVar>
+      <DynVar name="GROUP" required="false" type="CHARACTER" description="SUBGROUP_VAR" multiplesAllowed="false">
+        <DefaultValues/>
+      </DynVar>
+      <DynVar name="COLUMN" required="false" type="CHARACTER" description="HORIZONTAL_SERIES_VAR" multiplesAllowed="true">
+        <DefaultValues/>
+      </DynVar>
+      <DynVar name="ROW" required="false" type="CHARACTER" description="VERTICAL_SERIES_VAR" multiplesAllowed="true">
+        <DefaultValues/>
+      </DynVar>
+      <DynVar name="TIP" required="false" type="NUMERIC" description="TIP_VAR" multiplesAllowed="true">
+        <DefaultValues/>
+      </DynVar>
+      <DynVar name="KEY_FRAME" required="false" type="TIME" description="ANIMATION" multiplesAllowed="false">
+        <DefaultValues/>
+      </DynVar>
+    </DynVars>
+  </Meta>
+  <PadAttrs right="0" bottom="0" top="0" left="0"/>
+  <Animation keyFrame="KEY_FRAME" keyFrameSortOrder="ASCENDINGUNFORMATTED"/>
+  <LayoutGlobalLegend legendTitlePosition="TOP">
+    <AutoLegend>
+      <GraphNames>
+        <Value>BarChart</Value>
+      </GraphNames>
+    </AutoLegend>
+  </LayoutGlobalLegend>
+  <LayoutDataMatrix cellHeightMin="1" columnVars="COLUMN" rowVars="ROW" cellWidthMin="1">
+    <LayoutPrototypeOverlay2D wallDisplay="FILL">
+      <Y2AxisOpts gridDisplay="ON">
+        <LinearOpts>
+          <TickValueFormatOpts extractScale="true"/>
+        </LinearOpts>
+      </Y2AxisOpts>
+      <BarChartParm tip="TIP" stat="NONE" tipListPolicy="APPEND" _stmt="barchart" name="BarChart" category="CATEGORY" group="GROUP" groupDisplay="CLUSTER" responseVars="RESPONSE">
+        <OutlineAttrs color="Outlines:lineColor"/>
+      </BarChartParm>
+      <XAxisOpts name="categoryAxis">
+        <DiscreteOpts tickValueFitPolicy="STAGGERTRUNCATEDROP" sortOrder="DATA"/>
+        <LinearOpts>
+          <TickValueFormatOpts extractScale="true"/>
+        </LinearOpts>
+      </XAxisOpts>
+      <YAxisOpts gridDisplay="ON">
+        <DiscreteOpts sortOrder="DATA"/>
+        <LinearOpts>
+          <TickValueFormatOpts extractScale="true"/>
+        </LinearOpts>
+      </YAxisOpts>
+    </LayoutPrototypeOverlay2D>
+  </LayoutDataMatrix>
+  <OverviewAxis axis="categoryAxis" visible="OFF" minPlotSize="35" overviewAxisDisplay="AXISGUI LINE" maxPlotSize="60"/>
+</StatGraph>]]>
+		</Graph>
+		<VisualPromptContainer buttonText="Prompts" name="ve97" label="Prompt Container 1"/>
+		<Text missingValueDisplay="autolabel" name="ve209" label="Dynamic Vehicle Title" selectionDisabled="true">
+			<P class="paragraph10"><Span class="span10">Average</Span><Span class="span11"> </Span><DynamicSpan variable="pr92" class="span12"></DynamicSpan><Span class="span13"> </Span><Span class="span14">of</Span><Span class="span15"> </Span><DynamicSpan variable="pr218" class="span16"></DynamicSpan><Span class="span17"> Wheel Drive </Span><DynamicSpan variable="pr219" class="span18"></DynamicSpan><Span class="span19">s</Span><Span class="span20"> made in</Span><Span class="span21"> </Span><DynamicSpan variable="pr220" class="span22"></DynamicSpan></P>
+		</Text>
+		<Graph name="ve63" data="dd65" label="MPG by Make"><![CDATA[<StatGraph includeMissingDiscrete="true" missingValueDisplay="AUTOLABEL" border="false" width="400" opaque="false" height="400">
+  <Meta>
+    <DynVars>
+      <DynVar name="CATEGORY" required="true" type="CHARACTER" description="CATEGORY_VAR" multiplesAllowed="false">
+        <DefaultValues>
+          <Value>dd65.bi66</Value>
+        </DefaultValues>
+      </DynVar>
+      <DynVar name="RESPONSE" required="true" type="NUMERIC" description="MEASURE_VAR" multiplesAllowed="true">
+        <DefaultValues>
+          <Value>dd65.bi95</Value>
+        </DefaultValues>
+      </DynVar>
+      <DynVar name="GROUP" required="false" type="CHARACTER" description="SUBGROUP_VAR" multiplesAllowed="false">
+        <DefaultValues/>
+      </DynVar>
+      <DynVar name="COLUMN" required="false" type="CHARACTER" description="HORIZONTAL_SERIES_VAR" multiplesAllowed="true">
+        <DefaultValues/>
+      </DynVar>
+      <DynVar name="ROW" required="false" type="CHARACTER" description="VERTICAL_SERIES_VAR" multiplesAllowed="true">
+        <DefaultValues/>
+      </DynVar>
+      <DynVar name="TIP" required="false" type="NUMERIC" description="TIP_VAR" multiplesAllowed="true">
+        <DefaultValues/>
+      </DynVar>
+      <DynVar name="KEY_FRAME" required="false" type="TIME" description="ANIMATION" multiplesAllowed="false">
+        <DefaultValues/>
+      </DynVar>
+    </DynVars>
+  </Meta>
+  <PadAttrs right="0" bottom="0" top="0" left="0"/>
+  <Animation keyFrame="KEY_FRAME" keyFrameSortOrder="ASCENDINGUNFORMATTED"/>
+  <LayoutGlobalLegend legendTitlePosition="TOP">
+    <AutoLegend>
+      <GraphNames>
+        <Value>BarChart</Value>
+      </GraphNames>
+    </AutoLegend>
+  </LayoutGlobalLegend>
+  <LayoutDataMatrix cellHeightMin="1" columnVars="COLUMN" rowVars="ROW" cellWidthMin="1">
+    <LayoutPrototypeOverlay2D wallDisplay="FILL">
+      <Y2AxisOpts gridDisplay="ON">
+        <LinearOpts>
+          <TickValueFormatOpts extractScale="true"/>
+        </LinearOpts>
+      </Y2AxisOpts>
+      <BarChartParm tip="TIP" stat="NONE" tipListPolicy="APPEND" _stmt="barchart" name="BarChart" category="CATEGORY" group="GROUP" groupDisplay="CLUSTER" responseVars="RESPONSE">
+        <OutlineAttrs color="Outlines:lineColor"/>
+      </BarChartParm>
+      <XAxisOpts name="categoryAxis">
+        <DiscreteOpts tickValueFitPolicy="STAGGERTRUNCATEDROP" sortOrder="DATA"/>
+        <LinearOpts>
+          <TickValueFormatOpts extractScale="true"/>
+        </LinearOpts>
+      </XAxisOpts>
+      <YAxisOpts gridDisplay="ON">
+        <DiscreteOpts sortOrder="DATA"/>
+        <LinearOpts>
+          <TickValueFormatOpts extractScale="true"/>
+        </LinearOpts>
+      </YAxisOpts>
+    </LayoutPrototypeOverlay2D>
+  </LayoutDataMatrix>
+  <OverviewAxis axis="categoryAxis" visible="OFF" minPlotSize="35" overviewAxisDisplay="AXISGUI LINE" maxPlotSize="60"/>
+</StatGraph>]]>
+		</Graph>
+		<Text missingValueDisplay="autolabel" name="ve1423" label="Padding Text 1" selectionDisabled="true">
+			<P><Span> </Span></P>
+		</Text>
+		<Prompt ref="pr92" name="ve83" label="MPG Variable Select" selectionDisabled="true">
+			<LinkBar orientation="horizontal"/>
+		</Prompt>
+		<Text missingValueDisplay="autolabel" name="ve1432" label="Padding Text 2" selectionDisabled="true">
+			<P><Span> </Span></P>
+		</Text>
+		<Prompt ref="pr218" name="ve111" label="List 3" selectionDisabled="true">
+			<RadioBoxList/>
+		</Prompt>
+		<Prompt ref="pr219" name="ve105" label="List 2" selectionDisabled="true">
+			<RadioBoxList/>
+		</Prompt>
+		<Prompt ref="pr220" name="ve99" label="List 1" selectionDisabled="true">
+			<RadioBoxList/>
+		</Prompt>
+		<Text missingValueDisplay="autolabel" name="ve264" label="Fuel Cost Calculator Title" selectionDisabled="true">
+			<P class="paragraph13"><Span class="span25">Fuel Cost Calculator</Span></P>
+		</Text>
+		<Prompt ref="pr269" name="ve266" label="Total Distance" selectionDisabled="true">
+			<Title><Span>Total Distance</Span></Title>
+			<TextField/>
+		</Prompt>
+		<Prompt ref="pr270" name="ve238" label="% Highway Travel" selectionDisabled="true">
+			<Title><Span>% Highway Travel</Span></Title>
+			<Slider orientation="horizontal"/>
+		</Prompt>
+		<Prompt ref="pr271" name="ve234" label="Avg City MPG" selectionDisabled="true">
+			<Title><Span>Avg City MPG</Span></Title>
+			<Slider orientation="horizontal"/>
+		</Prompt>
+		<Prompt ref="pr272" name="ve242" label="Avg Highway MPG" selectionDisabled="true">
+			<Title><Span>Avg Highway MPG</Span></Title>
+			<Slider orientation="horizontal"/>
+		</Prompt>
+		<Prompt ref="pr273" name="ve246" label="Price/Gallon" selectionDisabled="true">
+			<Title><Span>Price/Gallon</Span></Title>
+			<Slider orientation="horizontal"/>
+		</Prompt>
+		<Text missingValueDisplay="autolabel" name="ve260" label="Padding Text 3" selectionDisabled="true">
+			<P><Span> </Span></P>
+		</Text>
+		<Text missingValueDisplay="autolabel" name="ve256" data="dd278" label="Gallons of Fuel Used" selectionDisabled="true">
+			<P class="paragraph15"><Span class="span27">Gallons</Span></P>
+			<P class="paragraph16"><DynamicSpan variable="bi283" class="span28"></DynamicSpan></P>
+		</Text>
+		<Text missingValueDisplay="autolabel" name="ve258" data="dd285" label="Cost of Fuel" selectionDisabled="true">
+			<P class="paragraph17"><Span class="span29">Fuel Cost</Span></P>
+			<P class="paragraph18"><Span class="span30">$</Span><DynamicSpan variable="bi297" class="span31"></DynamicSpan></P>
+		</Text>
+		<Text missingValueDisplay="autolabel" name="ve262" label="Padding Text 4" selectionDisabled="true">
+			<P><Span> </Span></P>
+		</Text>
+		<Prompt ref="pr323" name="ve330" label="Forecast Start Date" selectionDisabled="true">
+			<ComboBox/>
+		</Prompt>
+		<Text missingValueDisplay="autolabel" name="ve626" data="dd635" label="Dynamic Air Travel Forecast Title" selectionDisabled="true">
+			<P class="paragraph20"><Span class="span33">Forecast as of </Span><DynamicSpan variable="bi661" class="span34"></DynamicSpan><Span class="span35">/</Span><DynamicSpan variable="bi660" class="span36"></DynamicSpan></P>
+		</Text>
+		<Graph name="ve568" data="dd570" label="Air Travel Forecast"><![CDATA[<StatGraph border="false" includeMissingDiscrete="true" attrPriority="COLOR" opaque="false" missingValueDisplay="AUTOLABEL">
+  <Meta>
+    <DynVars>
+      <DynVar name="SHARED_DYNVAR_0" required="true" type="TIME" description="Datetime" multiplesAllowed="false">
+        <DefaultValues>
+          <Value>dd572.bi574</Value>
+        </DefaultValues>
+      </DynVar>
+      <DynVar name="DYNVAR_5" required="true" type="NUMERIC" description="Upper Confidence Limit" multiplesAllowed="false">
+        <DefaultValues>
+          <Value>dd572.bi579</Value>
+        </DefaultValues>
+      </DynVar>
+      <DynVar name="DYNVAR_6" required="true" type="NUMERIC" description="Lower Confidence Limit" multiplesAllowed="false">
+        <DefaultValues>
+          <Value>dd572.bi578</Value>
+        </DefaultValues>
+      </DynVar>
+      <DynVar name="DYNVAR_11" required="true" type="NUMERIC" description="Actual/Forecast" multiplesAllowed="true">
+        <DefaultValues>
+          <Value>dd571.bi575</Value>
+          <Value>dd571.bi576</Value>
+        </DefaultValues>
+      </DynVar>
+      <DynVar name="DYNVAR_13" required="false" type="CHARACTER" description="Group" multiplesAllowed="false">
+        <DefaultValues/>
+      </DynVar>
+      <DynVar name="DYNVAR_12" required="false" type="NUMERIC" description="Data Tip" multiplesAllowed="true">
+        <DefaultValues/>
+      </DynVar>
+    </DynVars>
+    <DataNameMap>
+      <Entry model="TimeSeriesPlot_1" data="dd571"/>
+      <Entry model="BandPlot_0" data="dd572"/>
+    </DataNameMap>
+  </Meta>
+  <PadAttrs right="0" bottom="0" top="0" left="0"/>
+  <LayoutGlobalLegend legendTitlePosition="TOP">
+    <AutoLegend>
+      <GraphNames>
+        <Value>TimeSeriesPlot_1</Value>
+      </GraphNames>
+    </AutoLegend>
+  </LayoutGlobalLegend>
+  <LayoutDataMatrix cellHeightMin="1" cellWidthMin="1">
+    <LayoutPrototypeOverlay2D cycleAttrs="true">
+      <Y2AxisOpts gridDisplay="ON">
+        <DiscreteOpts tickValueFitPolicy="THIN" sortOrder="DATA"/>
+        <LinearOpts>
+          <TickValueFormatOpts extractScale="true"/>
+        </LinearOpts>
+      </Y2AxisOpts>
+      <BandPlot dataTransparency="0.5" limitLower="DYNVAR_6" legendLabel="Band Plot " tipListPolicy="APPEND" x="SHARED_DYNVAR_0" name="BandPlot_0" connectOrder="AXIS" display="FILL" limitUpper="DYNVAR_5" justify="LEFT" _stmt="bandplot">
+        <FillAttrs color="Confidence:fillColor"/>
+      </BandPlot>
+      <TimeSeriesPlot tip="DYNVAR_12" time="SHARED_DYNVAR_0" fadeType="AUTO" tipListPolicy="APPEND" _stmt="timeseriesplot" name="TimeSeriesPlot_1" group="DYNVAR_13" responseVars="DYNVAR_11"/>
+      <XAxisOpts name="categoryAxis" gridDisplay="ON">
+        <DiscreteOpts tickValueListPolicy="DATA" tickValueFitPolicy="STAGGERTRUNCATEDROP" sortOrder="DATA"/>
+        <LinearOpts>
+          <TickValueFormatOpts extractScale="true"/>
+        </LinearOpts>
+      </XAxisOpts>
+      <YAxisOpts gridDisplay="ON">
+        <DiscreteOpts tickValueFitPolicy="THIN" sortOrder="DATA"/>
+        <LinearOpts>
+          <TickValueFormatOpts extractScale="true"/>
+        </LinearOpts>
+      </YAxisOpts>
+    </LayoutPrototypeOverlay2D>
+  </LayoutDataMatrix>
+  <OverviewAxis axis="categoryAxis" visible="OFF" minPlotSize="35" maxPlotSize="60">
+    <RefPlot plotName="BandPlot_0"/>
+    <RefPlot plotName="TimeSeriesPlot_1"/>
+  </OverviewAxis>
+</StatGraph>]]>
+		</Graph>
+		<VisualContainer name="ve755"/>
+		<VisualContainer name="ve1472"/>
+		<VisualContainer name="ve757"/>
+		<VisualContainer name="ve759"/>
+	</VisualElements>
+	<PromptDefinitions>
+		<PromptDefinition label="User Rank" labelFormatted="false" isParameter="true" format="COMMA12" name="pr45">
+			<DefaultValue>
+				<Number type="double" value="5.0"/>
+			</DefaultValue>
+			<NumericConstraint integerOnly="false" min="1.0" max="25.0" userValuesAllowed="false" required="true" minInclusive="true" maxInclusive="true"/>
+		</PromptDefinition>
+		<PromptDefinition data="dd85" label="Variable Select Parameter" labelFormatted="false" isParameter="true" labelVariable="bi90" valueVariable="bi90" name="pr92">
+			<DefaultValue>
+				<String>MPG (City)</String>
+			</DefaultValue>
+			<StringConstraint userValuesAllowed="false" required="true" minInclusive="true" maxInclusive="true"/>
+		</PromptDefinition>
+		<PromptDefinition data="dd113" label="Drivetrain Parameter" labelFormatted="false" isParameter="true" labelVariable="bi121" valueVariable="bi121" name="pr218">
+			<DefaultValue>
+				<String>Front</String>
+			</DefaultValue>
+			<StringConstraint userValuesAllowed="false" required="true" minInclusive="true" maxInclusive="true"/>
+		</PromptDefinition>
+		<PromptDefinition data="dd107" label="Type Parameter" labelFormatted="false" isParameter="true" labelVariable="bi142" valueVariable="bi142" name="pr219">
+			<DefaultValue>
+				<String>Sedan</String>
+			</DefaultValue>
+			<StringConstraint userValuesAllowed="false" required="true" minInclusive="true" maxInclusive="true"/>
+		</PromptDefinition>
+		<PromptDefinition data="dd101" label="Origin Parameter" labelFormatted="false" isParameter="true" labelVariable="bi168" valueVariable="bi168" name="pr220">
+			<DefaultValue>
+				<String>Asia</String>
+			</DefaultValue>
+			<StringConstraint userValuesAllowed="false" required="true" minInclusive="true" maxInclusive="true"/>
+		</PromptDefinition>
+		<PromptDefinition label="Total Distance" labelFormatted="false" isParameter="true" format="COMMA12" name="pr269">
+			<DefaultValue>
+				<Number type="double" value="1334.0"/>
+			</DefaultValue>
+			<NumericConstraint integerOnly="false" min="0.0" max="10000.0" userValuesAllowed="false" minInclusive="true" maxInclusive="true"/>
+		</PromptDefinition>
+		<PromptDefinition label="% Highway Travel" labelFormatted="false" isParameter="true" format="PERCENT12" name="pr270">
+			<DefaultValue>
+				<Number type="double" value="0.75"/>
+			</DefaultValue>
+			<NumericConstraint integerOnly="false" min="0.0" max="1.0" userValuesAllowed="false" required="true" minInclusive="true" maxInclusive="true"/>
+		</PromptDefinition>
+		<PromptDefinition label="City MPG" labelFormatted="false" isParameter="true" format="F12" name="pr271">
+			<DefaultValue>
+				<Number type="double" value="29.0"/>
+			</DefaultValue>
+			<NumericConstraint integerOnly="false" min="0.0" max="75.0" userValuesAllowed="false" required="true" minInclusive="true" maxInclusive="true"/>
+		</PromptDefinition>
+		<PromptDefinition label="Highway MPG" labelFormatted="false" isParameter="true" format="F12" name="pr272">
+			<DefaultValue>
+				<Number type="double" value="37.0"/>
+			</DefaultValue>
+			<NumericConstraint integerOnly="false" min="0.0" max="75.0" userValuesAllowed="false" required="true" minInclusive="true" maxInclusive="true"/>
+		</PromptDefinition>
+		<PromptDefinition label="Price/Gallon" labelFormatted="false" isParameter="true" format="DOLLAR12.2" name="pr273">
+			<DefaultValue>
+				<Number type="double" value="2.21"/>
+			</DefaultValue>
+			<NumericConstraint integerOnly="false" min="0.0" max="5.0" userValuesAllowed="false" required="true" minInclusive="true" maxInclusive="true"/>
+		</PromptDefinition>
+		<PromptDefinition data="dd332" label="Forecast Start Date Parameter" labelFormatted="false" isParameter="true" format="DATE9" labelVariable="bi592" valueVariable="bi592" name="pr323">
+			<DateConstraint dataType="date" min="0.0" max="36525.0" userValuesAllowed="false" minInclusive="true" maxInclusive="true"/>
+		</PromptDefinition>
+	</PromptDefinitions>
+	<View>
+		<Section name="vi1449" label="Read Me">
+			<Body>
+				<MediaContainer target="mt221">
+					<TiledLayout orientation="vertical"/>
+					<Visual ref="ve1450" name="vi1451"/>
+				</MediaContainer>
+			</Body>
+		</Section>
+		<Section name="vi1" label="Dynamic Ranks">
+			<Body>
+				<MediaContainer target="mt221">
+					<TiledLayout orientation="vertical"/>
+					<Container ref="ve755" name="vi756">
+						<TiledLayout orientation="horizontal"/>
+						<Visual ref="ve23" width="19.016%" name="vi24"/>
+						<Visual ref="ve20" width="80.984%" name="vi21"/>
+					</Container>
+				</MediaContainer>
+			</Body>
+		</Section>
+		<Section name="vi46" label="Dynamic Variables and Titles">
+			<Header>
+				<MediaContainer target="mt221">
+					<TiledLayout orientation="horizontal"/>
+					<Container ref="ve97" name="vi98">
+						<SlideLayout orientation="horizontal"/>
+						<Visual ref="ve111" name="vi112"/>
+						<Visual ref="ve105" name="vi106"/>
+						<Visual ref="ve99" name="vi100"/>
+					</Container>
+				</MediaContainer>
+			</Header>
+			<Body>
+				<MediaContainer target="mt221">
+					<TiledLayout orientation="vertical"/>
+					<Visual ref="ve209" height="7.843%" name="vi210"/>
+					<Visual ref="ve63" height="83.088%" name="vi64"/>
+					<Container ref="ve1472" height="9.069%" name="vi1473">
+						<TiledLayout orientation="horizontal"/>
+						<Visual ref="ve1423" width="33.37%" name="vi1424"/>
+						<Visual ref="ve83" width="33.37%" name="vi84"/>
+						<Visual ref="ve1432" width="33.26%" name="vi1433"/>
+					</Container>
+				</MediaContainer>
+			</Body>
+		</Section>
+		<Section name="vi225" label="What-If Calculator">
+			<Body>
+				<MediaContainer target="mt221">
+					<TiledLayout orientation="vertical"/>
+					<Visual ref="ve264" height="8.728%" name="vi265"/>
+					<Container ref="ve757" height="25.187%" name="vi758">
+						<TiledLayout orientation="horizontal"/>
+						<Visual ref="ve266" width="14.124%" name="vi267"/>
+						<Visual ref="ve238" width="21.017%" name="vi239"/>
+						<Visual ref="ve234" width="20.339%" name="vi235"/>
+						<Visual ref="ve242" width="22.147%" name="vi243"/>
+						<Visual ref="ve246" width="22.373%" name="vi247"/>
+					</Container>
+					<Container ref="ve759" height="66.085%" name="vi760">
+						<TiledLayout orientation="horizontal"/>
+						<Visual ref="ve260" width="25.251%" name="vi261"/>
+						<Visual ref="ve256" width="25.028%" name="vi257"/>
+						<Visual ref="ve258" width="25.028%" name="vi259"/>
+						<Visual ref="ve262" width="24.693%" name="vi263"/>
+					</Container>
+				</MediaContainer>
+			</Body>
+		</Section>
+		<Section name="vi316" label="Dynamic Drop-Down List">
+			<Header>
+				<MediaContainer target="mt221">
+					<TiledLayout orientation="horizontal"/>
+					<Visual ref="ve330" name="vi331"/>
+				</MediaContainer>
+			</Header>
+			<Body>
+				<MediaContainer target="mt221">
+					<TiledLayout orientation="vertical"/>
+					<Visual ref="ve626" height="7.416%" name="vi627"/>
+					<Visual ref="ve568" height="92.584%" name="vi569"/>
+				</MediaContainer>
+			</Body>
+		</Section>
+	</View>
+	<Interactions>
+		<Interaction name="ia1856" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve99" variable="bi168"/>
+			<InteractionElementReference purpose="target" ref="ve63" variable="bi69"/>
+		</Interaction>
+		<Interaction name="ia1857" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve105" variable="bi142"/>
+			<InteractionElementReference purpose="target" ref="ve63" variable="bi204"/>
+		</Interaction>
+		<Interaction name="ia1858" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve111" variable="bi121"/>
+			<InteractionElementReference purpose="target" ref="ve63" variable="bi70"/>
+		</Interaction>
+		<Interaction name="ia1859" type="filter" dataStage="detail">
+			<InteractionElementReference purpose="source" ref="ve111" variable="bi121"/>
+			<InteractionElementReference purpose="target" ref="ve105" variable="bi144"/>
+		</Interaction>
+		<Interaction name="ia1860" type="filter" dataStage="detail">
+			<InteractionElementReference purpose="source" ref="ve105" variable="bi142"/>
+			<InteractionElementReference purpose="target" ref="ve99" variable="bi167"/>
+		</Interaction>
+		<Interaction name="ia1861" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve99"/>
+			<InteractionElementReference purpose="target" ref="ve209"/>
+		</Interaction>
+		<Interaction name="ia1862" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve105"/>
+			<InteractionElementReference purpose="target" ref="ve209"/>
+		</Interaction>
+		<Interaction name="ia1863" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve111"/>
+			<InteractionElementReference purpose="target" ref="ve209"/>
+		</Interaction>
+		<Interaction name="ia1864" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve330" variable="bi592"/>
+			<InteractionElementReference purpose="target" ref="ve568" variable="bi596"/>
+		</Interaction>
+		<Interaction name="ia1865" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve330" variable="bi592"/>
+			<InteractionElementReference purpose="target" ref="ve626" variable="bi656"/>
+		</Interaction>
+		<Interaction name="ia1866" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve111"/>
+			<InteractionElementReference purpose="target" ref="ve1423"/>
+		</Interaction>
+		<Interaction name="ia1867" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve105"/>
+			<InteractionElementReference purpose="target" ref="ve1423"/>
+		</Interaction>
+		<Interaction name="ia1868" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve99"/>
+			<InteractionElementReference purpose="target" ref="ve1423"/>
+		</Interaction>
+		<Interaction name="ia1869" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve111"/>
+			<InteractionElementReference purpose="target" ref="ve1432"/>
+		</Interaction>
+		<Interaction name="ia1870" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve105"/>
+			<InteractionElementReference purpose="target" ref="ve1432"/>
+		</Interaction>
+		<Interaction name="ia1871" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve99"/>
+			<InteractionElementReference purpose="target" ref="ve1432"/>
+		</Interaction>
+		<Interaction name="ia1872" type="filter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve111" variable="bi121"/>
+			<InteractionElementReference purpose="target" ref="ve99" variable="bi169"/>
+		</Interaction>
+		<Interaction name="ia1873" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve23" variable="pr45"/>
+			<InteractionElementReference purpose="target" ref="ve20" variable="pr45"/>
+		</Interaction>
+		<Interaction name="ia1874" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve83" variable="pr92"/>
+			<InteractionElementReference purpose="target" ref="ve63" variable="pr92"/>
+		</Interaction>
+		<Interaction name="ia1875" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve266" variable="pr269"/>
+			<InteractionElementReference purpose="target" ref="ve256" variable="pr269"/>
+		</Interaction>
+		<Interaction name="ia1876" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve266" variable="pr269"/>
+			<InteractionElementReference purpose="target" ref="ve258" variable="pr269"/>
+		</Interaction>
+		<Interaction name="ia1877" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve238" variable="pr270"/>
+			<InteractionElementReference purpose="target" ref="ve256" variable="pr270"/>
+		</Interaction>
+		<Interaction name="ia1878" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve238" variable="pr270"/>
+			<InteractionElementReference purpose="target" ref="ve258" variable="pr270"/>
+		</Interaction>
+		<Interaction name="ia1879" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve234" variable="pr271"/>
+			<InteractionElementReference purpose="target" ref="ve256" variable="pr271"/>
+		</Interaction>
+		<Interaction name="ia1880" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve234" variable="pr271"/>
+			<InteractionElementReference purpose="target" ref="ve258" variable="pr271"/>
+		</Interaction>
+		<Interaction name="ia1881" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve242" variable="pr272"/>
+			<InteractionElementReference purpose="target" ref="ve256" variable="pr272"/>
+		</Interaction>
+		<Interaction name="ia1882" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve242" variable="pr272"/>
+			<InteractionElementReference purpose="target" ref="ve258" variable="pr272"/>
+		</Interaction>
+		<Interaction name="ia1883" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve246" variable="pr273"/>
+			<InteractionElementReference purpose="target" ref="ve258" variable="pr273"/>
+		</Interaction>
+		<Interaction name="ia1884" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve330" variable="pr323"/>
+			<InteractionElementReference purpose="target" ref="ve626" variable="pr323"/>
+		</Interaction>
+		<Interaction name="ia1885" type="parameter" dataStage="detail" derived="true">
+			<InteractionElementReference purpose="source" ref="ve330" variable="pr323"/>
+			<InteractionElementReference purpose="target" ref="ve568" variable="pr323"/>
+		</Interaction>
+	</Interactions>
+	<MediaDefinitionResource file="SBIP://METASERVER/System/Applications/SAS Visual Analytics/media/Default_Media_Definition.xml(Report)"/>
+	<MediaSchemes>
+		<MediaScheme name="ms222">
+			<BaseStylesheetResource file="SBIP://METASERVER/System/Applications/SAS Visual Analytics/media/SAS_Report_Snow.css(DocumentCSS)"/>
+			<Stylesheet>
+<![CDATA[
+#ve256 .span27 {
+  font-weight: bold;
+  font-size: 22pt;
+}
+#ve256 .span28 {
+  color: #005a62;
+  font-weight: bold;
+  font-size: 60pt;
+}
+#ve264 .span25 {
+  font-size: 20pt;
+}
+#ve20 .ValueText {
+  font-size: 14pt;
+}
+#ve1450 .span9 {
+  font-size: 18pt;
+}
+#ve1450 .span8 {
+  font-size: 18pt;
+}
+#ve209 .span22 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve209 .span21 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve1450 .span1 {
+  font-size: 22pt;
+}
+#ve1450 .span3 {
+  font-size: 18pt;
+}
+#ve1450 .span4 {
+  font-size: 18pt;
+}
+#ve20 .TitleStyle {
+  font-weight: bold;
+  font-size: 20pt;
+  text-align: center;
+}
+#ve1450 .span5 {
+  font-size: 18pt;
+}
+#ve1450 .span6 {
+  font-size: 18pt;
+}
+#ve1450 .span7 {
+  font-size: 18pt;
+}
+#ve258 .paragraph18 {
+  text-align: center;
+}
+#ve258 .paragraph17 {
+  text-align: center;
+}
+#ve264 .Container {
+  transparency: 0;
+  background-color: #e0e0e0;
+  border-color: #000000;
+  border-width: 1;
+}
+#ve63 .ValueText {
+  font-size: 14pt;
+}
+#ve266 .TitleStyle {
+  font-size: 16pt;
+  text-align: center;
+}
+#ve234 .TitleStyle {
+  font-size: 16pt;
+  text-align: center;
+}
+#ve264 .paragraph13 {
+  text-align: center;
+}
+#ve1450 .paragraph1 {
+  text-align: center;
+}
+#ve23 .Slider {
+  font-size: 14pt;
+}
+#ve626 .paragraph20 {
+  text-align: center;
+}
+#ve246 .TitleStyle {
+  font-size: 16pt;
+  text-align: center;
+}
+#ve568 .ValueText {
+  font-size: 14pt;
+}
+#ve20 .LabelText {
+  font-weight: bold;
+  font-size: 14pt;
+}
+#ve209 .span18 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve626 .span36 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve209 .span19 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve626 .span35 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve626 .span34 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve626 .span33 {
+  font-size: 20pt;
+}
+#ve246 .Slider {
+  font-size: 14pt;
+}
+#ve209 .span10 {
+  font-size: 20pt;
+}
+#ve209 .span11 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve256 .paragraph15 {
+  text-align: center;
+}
+#ve209 .paragraph10 {
+  text-align: center;
+}
+#ve209 .span12 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve209 .span13 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve209 .span14 {
+  font-size: 20pt;
+}
+#ve209 .span15 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve256 .paragraph16 {
+  text-align: center;
+}
+#ve209 .span16 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve209 .span17 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+#ve238 .TitleStyle {
+  font-size: 16pt;
+  text-align: center;
+}
+#ve209 .span20 {
+  font-size: 20pt;
+}
+#ve242 .Slider {
+  font-size: 14pt;
+}
+#ve238 .Slider {
+  font-size: 14pt;
+}
+#ve266 .TextInput {
+  font-size: 14pt;
+}
+#ve568 .GraphDataStyle1 {
+  text-color: #194393;
+  line-color: #194393;
+  marker-color: #194393;
+}
+#ve568 .GraphDataStyleDefault {
+  text-color: #194393;
+  line-color: #194393;
+  marker-color: #194393;
+}
+#ve568 .GraphDataStyle2 {
+  text-color: #000000;
+  line-color: #000000;
+  marker-color: #000000;
+}
+#ve83 .ButtonBar {
+  font-size: 16pt;
+}
+#ve568 .GraphDataStyle3 {
+  text-color: #194393;
+  line-color: #194393;
+  marker-color: #194393;
+}
+#ve97 .VisualPromptContainer {
+  font-size: 16pt;
+}
+#ve568 .LabelText {
+  font-weight: bold;
+  font-size: 14pt;
+}
+#ve63 .LabelText {
+  font-weight: bold;
+  font-size: 14pt;
+}
+#ve258 .span31 {
+  color: #005a62;
+  font-weight: bold;
+  font-size: 60pt;
+}
+#ve258 .span30 {
+  color: #005a62;
+  font-weight: bold;
+  font-size: 60pt;
+}
+#ve23 .TitleStyle {
+  font-size: 16pt;
+  text-align: center;
+}
+#ve568 .DataText {
+  font-size: 10pt;
+}
+#ve258 .span29 {
+  font-weight: bold;
+  font-size: 22pt;
+}
+#ve234 .Slider {
+  font-size: 14pt;
+}
+#ve242 .TitleStyle {
+  font-size: 16pt;
+  text-align: center;
+}
+#ve330 .ComboBox {
+  font-size: 16pt;
+}
+]]>
+			</Stylesheet>
+		</MediaScheme>
+	</MediaSchemes>
+	<MediaTargets>
+		<MediaTarget definition="web" scheme="ms222" name="mt221"/>
+	</MediaTargets>
+	<Properties>
+		<Property key="displayDataSource">ds340</Property>
+	</Properties>
+	<Groupings>
+		<Grouping outputType="string" name="gr56">
+			<GroupingVariables>
+				<GroupingVariable variable="var57" type="double"/>
+			</GroupingVariables>
+			<Group>
+				<ValueExpression>&apos;MPG (City)&apos;</ValueExpression>
+				<TestExpression>in(${var57,binned},1.0)</TestExpression>
+			</Group>
+			<Other>
+				<ValueExpression>&apos;MPG (Highway)&apos;</ValueExpression>
+			</Other>
+		</Grouping>
+	</Groupings>
+	<History>
+		<Versions>
+			<Version key="3.3.1" lastNonce="20170223_missingValueDisplay" lastDate="2019-03-18T13:40:36Z"/>
+		</Versions>
+	</History>
+</SASReport>
