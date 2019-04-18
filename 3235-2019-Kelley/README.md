@@ -8,7 +8,7 @@ This paper shows you how to make a SAS report with ODS WORD. You learn how to cr
 
 Find the full paper online with the [SAS Global Forum proceedings](https://www.sas.com/en_us/events/sas-global-forum/program/proceedings.html).
 
-The ODS Destination for Word tip sheet is available at http://support.sas.com/rnd/base/ods/Tipsheet_ods_word.pdf.
+The [ODS Destination for Word tip sheet](http://support.sas.com/rnd/base/ods/Tipsheet_ods_word.pdf) is hot off of the presses!
 
 ## Support contact(s)
 
