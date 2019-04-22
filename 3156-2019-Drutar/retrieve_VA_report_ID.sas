@@ -27,7 +27,6 @@
 * Base URI for the service call;
 %let BASE_URI=%sysfunc(getoption(servicesbaseurl));
 
-
 /* Create Macro Variable 'report_name' for the name of the report */
 %let report_name = %sysfunc(urlencode(Simple Roads Report));
 
