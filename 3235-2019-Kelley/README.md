@@ -10,6 +10,8 @@ Find the full paper online with the [SAS Global Forum proceedings](https://www.s
 
 The [ODS Destination for Word tip sheet](http://support.sas.com/rnd/base/ods/Tipsheet_ods_word.pdf) is hot off of the presses!
 
+See also the [ODS WORD Statement](https://go.documentation.sas.com/?docsetId=odsug&docsetTarget=p10mxeb6wxqfjgn1p5u0w4t8qf20.htm&docsetVersion=9.4&locale=en).
+
 ## Support contact(s)
 
 Contact the author with comments and questions:                                                                                                                                                                                                                                                                                                                                                                                         
