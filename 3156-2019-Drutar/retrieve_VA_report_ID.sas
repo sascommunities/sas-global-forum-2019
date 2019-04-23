@@ -15,7 +15,7 @@
 *
 * Author: Michael Drutar
 *
-* Input: Viya Environment http (or https) address, Name of the report
+* Input: The Name of a Visual Analytics report
 *
 * Output: PROC PRINT'S output displaying the name(s) and ID(s) of the report(s)
 *
