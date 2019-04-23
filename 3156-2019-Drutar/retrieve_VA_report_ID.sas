@@ -47,8 +47,23 @@ filename  rep_id temp;
 /* read in the response */
 libname rep_id json;
 
-/* Print the report name and ID */
-proc print data=rep_id.items noobs label;
-label name='Report Name' id='Report Internal ID';
-var name id;
-run;
+/* Print out the list of reports */
+/* If no reports were found, print a message */
+options mprint mlogic symbolgen;
+%macro checkds(dsn);
+   %if %sysfunc(exist(&dsn)) %then %do;
+	title "The Following Report(s) With The Name '%sysfunc(urldecode(&report_name))' Were Found!";
+	proc print data=rep_id.items label;
+	label name='Report Name' id='Report Internal ID';
+	var name id;
+	run;
+	title;
+   %end;
+   %else %do;
+      data _null_;
+         file print;
+         put #3 @10 "No Reports With The Name '%sysfunc(urldecode(&report_name))' Were Found!";
+      run;
+   %end;
+%mend checkds;
+%checkds(rep_id.items_links)
