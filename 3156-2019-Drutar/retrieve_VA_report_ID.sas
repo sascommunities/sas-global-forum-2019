@@ -20,7 +20,7 @@
 * Output: PROC PRINT'S output displaying the name(s) and ID(s) of the report(s)
 *
 * All code below is intended to be submitted in a SAS Studio 5.1 (or later) 
-* session within a Viya 3.4 (or later) environment which contains the  
+* session within a SAS Viya 3.4 (or later) environment which contains the  
 * SAS Viya servies that are being called.
 \******************************************************************************/
 
