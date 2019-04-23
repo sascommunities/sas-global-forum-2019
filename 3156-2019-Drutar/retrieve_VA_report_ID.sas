@@ -27,8 +27,9 @@
 * Base URI for the service call;
 %let BASE_URI=%sysfunc(getoption(servicesbaseurl));
 
+/* Input a report name.  By default, this code returns report(s) Named "Retail Insights"  */
 /* Create Macro Variable 'report_name' for the name of the report */
-%let report_name = %sysfunc(urlencode(Simple Roads Report));
+%let report_name = %sysfunc(urlencode(Retail Insights));
 
 /* Create filename for response */
 filename  rep_id temp;
