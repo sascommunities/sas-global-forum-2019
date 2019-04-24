@@ -17,7 +17,7 @@ The SAS code from the paper do not have to be run on the Visual Analytics report
 If you wish to replicate the paper's examples in their entirety using you can use the SAS Visual Analytics reports available in this repository.  The process for re-creating the paper’s examples is below:
 
 1.  [Re-create the paper's data sources](./Data)
-2.  [Import the SAS Visual Analytics Report Examples](./Visual Analytics Reports)
+2.  [Import the SAS Visual Analytics Report Examples](./Visual_Analytics_Reports)
 3.  Run the example SAS Code
 
 #### Bonus! To assist with getting started, the following SAS code is provided which will retireve the internal UID of a SAS Visual Analytics report
