@@ -10,4 +10,4 @@ Find the full paper online with the [SAS Global Forum proceedings](https://www.s
 ## Support contact(s)
 
 Contact the author with questions, feedback, and lavish praise.
-Cal.Sommer@sas.com
+Carl.Sommer@sas.com
