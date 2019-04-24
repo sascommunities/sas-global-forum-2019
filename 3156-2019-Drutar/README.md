@@ -8,7 +8,7 @@ Find the full paper online with the [SAS Global Forum proceedings](https://www.s
 
 ## Supporting Code
 
-The code covered in the paper can be found in this repo!  All code is intended to be submitted in a SAS Studio 5 session within a Viya 3.3 (and beyond) environment which contains the SAS Viya servies that are being called. 
+The code covered in the paper can be found in this repo!  All SAS code must be submitted in a SAS Studio 5.1 (or later) session within a Viya 3.4 (or later) environment which contains the SAS Viya servies that are being called.
 
 #Programatically Retrieve a VA Report's UID - [retrieve_VA_report_ID.sas](./retrieve_VA_report_ID.sas)
 
