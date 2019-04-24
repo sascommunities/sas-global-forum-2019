@@ -1,6 +1,6 @@
 # SAS  Viya  reportImages Service: The Report Optimization Speedometer - Visual Analytics Example Reports     
 
-This paper uses three SAS Visual Analytics report in its examples.  Before importing the reports into your SAS Viya platform, you will need to generate the needed data sources.  This can be accomplished by completing the steps in the [data](../Data/README.md) section of this GitHub repoistory.
+This paper uses three SAS Visual Analytics report in its examples.  Before importing the reports into your SAS Viya platform, you will need to generate the needed data sources.  This can be accomplished by completing the steps in the [data](../Data/README.md) section of this GitHub repository.
 
 ## Import the SAS Visual Analytics Reports using the SAS Environment Manager
 
