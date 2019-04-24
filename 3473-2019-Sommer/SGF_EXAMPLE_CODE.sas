@@ -378,3 +378,124 @@
 			   ,outputTable=&outputTable
 			   ,promote=&promote)
  %mend dcm_rulefire_summary;
+ 
+ ******************************************************************************************;
+*  Copyright (c) 2019 by SAS Institute, Inc., Cary, NC, USA.                             *;
+*  All rights reserved.                                                                  *;
+******************************************************************************************;
+*  NAME:        dcm_get_revisions.sas                                                    *;
+*  DESCRIPTION: Get the list of decisions or rulesets and related information into table *;
+*               specified by the user.                                                   *;
+*  OWNER:       Carl Sommer                                                              *;
+******************************************************************************************;
+
+%macro dcm_get_revisions(type=DECISION
+                        ,name=_ALL_
+                        ,table=work.revisions) ;
+
+   %let type = %upcase(&type);       
+   %if (&type eq DECISION) %then %let baseURI = %str(/decisions/flows);
+   %else %if (&type eq RULESET) %then %let baseURI = %str(/businessRules/ruleSets);
+      
+   %* get the list of objects;
+   filename resp temp;
+  
+   %if &name ne %str(_ALL_) %then %let daFilter= %nrstr(&)%str(filter=eq(name,"&name"));
+   %else %let daFilter= %str();
+
+   %dcm_call_rest_service(
+        service=&baseURI.?start=0%nrstr(&)limit=10000%nrstr(&)&daFilter,
+        method=GET,
+        response=resp,
+        headers=%str("accept"="application/vnd.sas.collection+json"
+                     "content-type"="application/json"))     
+ 
+   %* Build the map JSON.  Note that CARDS4 / DATALINES4 cannot be used inside a macro;		
+   filename nameID temp;
+   data _null_;
+      file nameID;
+      put '{"DATASETS": [';	  
+	  put '{"DSNAME": "nameID","TABLEPATH": "/root/items","VARIABLES": [';
+      put '{"NAME": "id", "TYPE": "CHARACTER", "PATH": "/root/items/id", "CURRENT_LENGTH": 36},';
+	  put '{"NAME": "name", "TYPE": "CHARACTER", "PATH": "/root/items/name"}]}';	  
+	  put ']}';
+   run;
+   libname resp json nrm noalldata automap=reuse map=nameID ordinalcount=none;
+     
+   %* Build the map JSON for a revision set. Note that CARDS4 / DATALINES4 cannot be used inside a macro; 
+   filename revSet temp;
+   data _null_;
+      file revSet;
+      put '{"DATASETS": [';	  
+	  put '{"DSNAME": "revisions","TABLEPATH": "/root/items","VARIABLES": [';
+      put '{"NAME": "creationTimeStamp", "TYPE": "NUMERIC","PATH": "/root/items/creationTimeStamp",';
+	  put ' "INFORMAT" : [ "?IS8601DT", 19, 0 ], "FORMAT" : [ "IS8601DT", 19, 0 ]},';
+      put '{"NAME": "modifiedTimeStamp", "TYPE": "NUMERIC", "PATH": "/root/items/modifiedTimeStamp",';
+	  put ' "INFORMAT" : [ "?IS8601DT", 19, 0 ], "FORMAT" : [ "IS8601DT", 19, 0 ]},';
+      put '{"NAME": "createdBy", "TYPE": "CHARACTER", "PATH": "/root/items/createdBy"},';
+      put '{"NAME": "modifiedBy", "TYPE": "CHARACTER", "PATH": "/root/items/modifiedBy" },';
+      put '{"NAME": "revisionId", "TYPE": "CHARACTER", "PATH": "/root/items/id", "CURRENT_LENGTH": 36},';
+      put '{"NAME": "majorRevision", "TYPE": "NUMERIC", "PATH": "/root/items/majorRevision"},';
+      put '{"NAME": "minorRevision", "TYPE": "NUMERIC", "PATH": "/root/items/minorRevision"}]}';      
+	  put ']}';
+   run;
+      
+   %macro dcm_getRevSet(name,baseID, revURI,counter);
+     filename revResp temp;
+     %* get a revision and put it to a temp enumerated table;
+     %dcm_call_rest_service(
+        service=&revUri?start=0%nrstr(&)limit=10000,
+		method=GET,response=revResp,
+        headers=%str("accept"="application/vnd.sas.collection+json"
+                     "content-type"="application/json"))     
+
+     libname revResp json nrm noalldata automap=reuse map=revSet ordinalcount=none;
+     
+	 data work._tempRev&counter;
+	   length revisionURI $200;
+       name = urldecode("&name");
+       retain name;  retain baseId "&baseId";
+	   set revResp.revisions;
+	   revisionURI = catt("&revURI./",revisionid);
+	 run; 	 
+   %mend dcm_getRevSet;
+   
+   %let RevCount = 0;
+   filename getRevs temp;
+   data _null_;
+      file getRevs;
+      length revisionURI $100;
+      set resp.nameID end=_last;
+	  revisionURI = catt("&baseURI",'/',id,'/revisions');
+      safeName = urlencode(strip(name));      
+      put '%dcm_getRevSet(%nrstr(' safeName +(-1)'),%str(' id +(-1)'),%str(' revisionURI +(-1)'),' _n_ ')';
+	  if _last then call symputx('RevCount',_n_);
+   run;
+   
+   %if (&revCount eq 0) %then %goto exit;
+ 
+   %inc getRevs;
+      
+   %* get all revisions for each ruleset/decision ;
+   data &table;
+     length revisionURI $200 name $256 baseId $36 creationTimeStamp modifiedTimeStamp 8 
+        createdBy modifiedBy $32 revisionId $36 majorRevision minorRevision 8 type $15;
+     retain type "&type";
+     set work._tempRev: ;
+   run;
+   
+   %exit:
+    proc datasets lib=work memtype=data nolist noprint nowarn;
+	   delete _tempRev:
+    run; quit;
+    
+    %if %sysmacexist(dcm_getRevSet) %then %do; %sysmacdelete dcm_getRevSet /nowarn; %end;
+	%if (%sysfunc(fileref(nameID))  le 0) %then %do; filename nameid  clear; %end; 
+	%if (%sysfunc(fileref(revset))  le 0) %then %do; filename revset  clear; %end;
+	%if (%sysfunc(fileref(resp))    le 0) %then %do; filename resp    clear; %end;
+	%if (%sysfunc(fileref(getrevs)) le 0) %then %do; filename getrevs clear; %end;
+	%if (%sysfunc(fileref(revresp)) le 0) %then %do; filename revresp clear; %end;  
+    %if (%sysfunc(libref(resp))     eq 0) %then %do; libname  resp    clear; %end;
+    %if (%sysfunc(libref(revresp))  eq 0) %then %do; libname  revresp clear; %end;
+
+%mend dcm_get_revisions;
