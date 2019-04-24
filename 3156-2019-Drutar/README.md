@@ -8,9 +8,15 @@ Find the full paper online with the [SAS Global Forum proceedings](https://www.s
 
 ## Supporting Code
 
-# All SAS code must be submitted in a SAS Studio 5.1 (or later) session within a Viya 3.4 (or later) environment which contains the SAS Viya servies that are being called.
+### All SAS code must be submitted in a SAS Studio 5.1 (or later) session within a Viya 3.4 (or later) environment which contains the SAS Viya services that are being called.
 
-The SAS Visual Analytics Reports and SAS code examples covered in the paper can be found in this repo!  
+The SAS Visual Analytics Reports and SAS code examples covered in the paper can be found in this repository!
+
+The SAS code from the paper do not have to be run on the Visual Analytics reports that are shown in the paper, rather they can be run calling ANY Visual Analytics Report by inputting the desired report’s internal UID (see the ViyaAPI_SASCode section for more details).
+
+If you wish to replicate the paper's examples in their entirety using you can use the SAS Visual Analytics reports available in this repository.  The process for re-creating the paper’s examples is below:
+
+1.  [Re-create the paper's data sources](./Data)
 
 #Programatically Retrieve a VA Report's UID - [retrieve_VA_report_ID.sas](./retrieve_VA_report_ID.sas)
 
