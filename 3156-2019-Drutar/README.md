@@ -18,7 +18,7 @@ If you wish to replicate the paper's examples in their entirety using you can us
 
 1.  [Re-create the paper's data sources](./Data)
 2.  [Import the SAS Visual Analytics Report Examples](./Visual_Analytics_Reports)
-3.  Run the example SAS Code
+3.  [Run the example SAS Code](./ViyaAPI_SASCode)
 
 #### Bonus! To assist with getting started, the following SAS code is provided which will retrieve the internal UID of a SAS Visual Analytics report
 * [retrieve_VA_report_ID.sas](./retrieve_VA_report_ID.sas)
