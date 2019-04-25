@@ -10,7 +10,20 @@ All example reports in this paper were created in SAS Visual Analytics 8.3.  In 
 
 Then import the report via the "Import via GUI" section of these [instructions](https://go.documentation.sas.com/?cdcId=calcdc&cdcVersion=3.4&docsetId=calpromotion&docsetTarget=n0djzpossyj6rrn1vvi1wfvp2qhp.htm&locale=en#p1h997oay4wsjon1uby6m99zzhsx).  
 
-The reports will be imported into the '/Public/SGF_3156_2019/' content folder of your Viya Environment
+In total, three reports will be imported into the '/Public/SGF_3156_2019/' content folder of your Viya Environment:
+
+* Simple Roads Report
+
+![](./Simple_Roads_Report.png )    
+
+* Parkway Roads - Source Data
+
+![](./Source_dataReport.png )    
+
+* Parkway Roads - Aggregated Data
+
+![](./Agg_dataReport.png )    
+
 
 
 
