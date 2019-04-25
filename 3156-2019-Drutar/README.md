@@ -6,7 +6,6 @@ SAS® Viya® offers several techniques that can maximize the speed of SAS® Visu
 <p align="center">
   <img src="./Main_ReadME.png">
 </p>
- ![](./Main_ReadME.png)
 
 ## Additional information
 
