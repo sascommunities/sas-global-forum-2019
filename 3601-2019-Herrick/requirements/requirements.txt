@@ -1,9 +1,11 @@
 numpy
 jupyter
+jupyterlab
 pyzmq
 scipy
 pandas==0.23.4
 matplotlib
+networkx
 seaborn
 sympy
 bokeh
