@@ -21,8 +21,9 @@
 *
 * Output: ODS table showing the report name, id, reportImages job id and job duration
 *
-* All code below is intended to be submitted in a SAS Studio 5.1 (or later) 
-* session within a SAS Viya 3.4 (or later) environment 
+* All code included in this section must be submitted in a SAS Studio 5.1 (or later) 
+* session within a Viya 3.4 (or later) environment which contains the SAS Viya services 
+* that are being called. 
 \******************************************************************************/
 
 
