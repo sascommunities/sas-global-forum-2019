@@ -14,10 +14,6 @@ In total, three reports will be imported into the '/Public/SGF_3156_2019/' conte
 
 * Simple Roads Report
 
-<p align="left">
-  <img width="800" height="600" src="./Simple_Roads_Report.png">
-</p>
-
 ![](./Simple_Roads_Report.png )    
 
 * Parkway Roads - Source Data
