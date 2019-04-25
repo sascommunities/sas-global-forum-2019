@@ -1,6 +1,6 @@
 # SAS  Viya  reportImages Service: The Report Optimization Speedometer - SAS Code     
 
-## All code included in this section must be submitted in a SAS Studio 5.1 (or later) session within a Viya 3.4 (or later) environment which contains the SAS Viya servies that are being called.
+## All code included in this section must be submitted in a SAS Studio 5.1 (or later) session within a Viya 3.4 (or later) environment which contains the SAS Viya services that are being called.
 
 This paper demonstrates two main SAS Code examples which interact with the SAS Viya APIs.  Before running these code examples both the SAS Visual Analytics example reports and their associated data soruces will need to be generated/imported into your SAS Viya platform.  This can be accomplished by first completing the steps in the [data](../Data/README.md) and [Visual Analytics Reports](../Data/Visual Analytics Reports/README.md) sections of this GitHub repository.
 
