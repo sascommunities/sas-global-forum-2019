@@ -13,6 +13,13 @@ Then import the report via the "Import via GUI" section of these [instructions](
 In total, three reports will be imported into the '/Public/SGF_3156_2019/' content folder of your Viya Environment:
 
 * Simple Roads Report
+
+<p align="left">
+  <img width="800" height="600" src="./Simple_Roads_Report.png">
+</p>
+
+![](./Simple_Roads_Report.png )    
+
 * Parkway Roads - Source Data
 * Parkway Roads - Aggregated Data
 
