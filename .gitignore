@@ -2,6 +2,9 @@
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 
+# Visual Studio Code
+.vscode/
+
 # Remove previous ipynb_checkpoints
 #   git rm -r .ipynb_checkpoints/
 #
@@ -132,3 +135,4 @@ dmypy.json
 *.crt
 .authinfo
 .DS_Store
+authinfo
