@@ -1,0 +1,3 @@
+match (n2)--(n3), (n0)--(n4), (n2)--(n6), (n0)--(n7), (n5)--(n7), (n9)--(n10), (n8)--(n11), (n3)--(n12), (n5)--(n13), (n6)--(n13), (n11)--(n14), (n1)--(n15), (n10)--(n16), (n12)--(n16), (n1)--(n17), (n9)--(n17), (n3)--(n18), (n8)--(n18), (n3)--(n19)
+where n0.label='14' and n1.label='36' and n2.label='19' and n3.label='10' and n4.label='19' and n5.label='26' and n6.label='48' and n7.label='34' and n8.label='20' and n9.label='36' and n10.label='6' and n11.label='50' and n12.label='25' and n13.label='48' and n14.label='35' and n15.label='50' and n16.label='29' and n17.label='27' and n18.label='27' and n19.label='29' and not(n1=n9) and not(n2=n4) and not(n6=n13) and not(n11=n15) and not(n16=n19) and not(n17=n18)
+return count(n0)
