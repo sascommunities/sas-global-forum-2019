@@ -8,7 +8,7 @@ One tip per minute, and out of the twenty you are guaranteed to find at least on
 
 Find the full paper online with the [SAS Global Forum proceedings](https://www.sas.com/content/dam/SAS/support/en/sas-global-forum-proceedings/2019/3162-2019.pdf).
 
-[Download the PowerPoint slides](3162_20 in 20_Quick Tips for SAS Enterprise Guide Users.pptx) -- with embedded videos.
+[Download the PowerPoint slides](3162_20%20in%2020_Quick%20Tips%20for%20SAS%20Enterprise%20Guide%20Users.pptx) -- with embedded videos.
 
 ## Support contact(s)
 
