@@ -20,9 +20,9 @@ The following notebooks provide examples that highlight the power of using Jupyt
 
 ## Additional information
 
-Attending [SGF 2019](https://www.sas.com/en_us/events/sas-global-forum.html)?  I will be presenting this material on Monday, April 29, from 11:30 AM-12:00 PM in room D168.  I hope to see you there!
+Thanks to everyone who attended my presentation at [SGF 2019](https://www.sas.com/en_us/events/sas-global-forum.html).  It was great to have so many good questions! 
 
-The full paper will be available online with the [SAS Global Forum proceedings](https://www.sas.com/en_us/events/sas-global-forum/program/proceedings.html).
+The full paper is available online in the [SAS Global Forum proceedings](https://www.sas.com/en_us/events/sas-global-forum/program/proceedings.html).  Here is the [direct link to my paper](https://www.sas.com/content/dam/SAS/support/en/sas-global-forum-proceedings/2019/3133-2019.pdf). 
 
 ## Support contact
 
