@@ -8,4 +8,6 @@ https://www.sas.com/content/dam/SAS/support/en/sas-global-forum-proceedings/2019
 
 # Workshop Files
 
-Coming soon.
+Download the "DelGobbo_Excel_2019_HOW.zip" file and follow the instructions in the "ReadMe.txt" available in the ZIP archive.  
+
+If you do not want to use the ZIP archive then you can access the individual files in the **Files** folder.
