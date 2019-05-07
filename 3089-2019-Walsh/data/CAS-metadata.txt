@@ -1,0 +1,8 @@
+Overview
+https://catalogue.data.govt.nz/dataset/crash-analysis-system-cas-data
+
+Field Descriptions
+https://opendata-nzta.opendata.arcgis.com/pages/cas-data-field-descriptions
+
+Data source
+https://catalogue.data.govt.nz/dataset/crash-analysis-system-cas-data/resource/6c2a42df-a1e2-4be9-9935-f1a6530f8a72

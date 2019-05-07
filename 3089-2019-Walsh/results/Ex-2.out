@@ -1,0 +1,192 @@
+*------------------------------------------------------------*
+User:                sasdemo
+Date:                February 13, 2019
+Time:                17:04:29
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+Role         Level         Count
+ 
+ID         INTERVAL           2
+INPUT      INTERVAL          56
+TARGET     BINARY             1
+ 
+ 
+ 
+ 
+Model Events
+ 
+                                  Number
+                   Measurement      of
+Target    Event       Level       Levels      Order       Label
+ 
+target      1        BINARY          2      Descending
+ 
+ 
+ 
+ 
+Predicted and decision variables
+ 
+Type         Variable     Label
+ 
+TARGET       target
+PREDICTED    P_target1    Predicted: target=1
+RESIDUAL     R_target1    Residual: target=1
+PREDICTED    P_target0    Predicted: target=0
+RESIDUAL     R_target0    Residual: target=0
+FROM         F_target     From: target
+INTO         I_target     Into: target
+ 
+ 
+ 
+R Handle Contents
+ 
+     Handle         Available
+ 
+EMR_NUM_TARGET          Y
+EMR_CLASS_TARGET        Y
+EMR_NUM_INPUT           Y
+EMR_CLASS_INPUT         Y
+EMR_CHAR_INPUT          Y
+ 
+Contents
+ 
+ 
+rtarget
+IMP_crashDirectionDescrEast + IMP_crashDirectionDescrNorth + IMP_crashDirectionDescrSouth + IMP_crashDirectionDescrWest + IMP_roadLane2 + PCTL_crashDistanc03_50_250 + PCTL_crashDistanc04_250_high + TG_carStationWagon0 + TG_carStationWagon1 + TG_carStationW
+ 
+ 
+ 
+ 
+ 
+                                       0           1 MeanDecreaseAccuracy
+IMP_crashDirectionDescrEast   1.44379299  0.05155545            1.0804663
+IMP_crashDirectionDescrNorth  0.51890058 -0.61105204           -0.4149828
+IMP_crashDirectionDescrSouth -0.31113744  1.58595233            2.7629676
+IMP_crashDirectionDescrWest   0.88087224 -0.06777395            1.4614925
+IMP_roadLane2                 4.63337058  4.05673158            5.0361261
+PCTL_crashDistanc03_50_250   -0.45556014  1.56733493            1.3984444
+PCTL_crashDistanc04_250_high  5.16808339 -0.31877369            5.6240529
+TG_carStationWagon0           5.30806239  3.98690049            6.2280449
+TG_carStationWagon1           4.48475573  1.07721631            4.5697063
+TG_carStationWagon2           5.13455413  5.24522901            6.1608693
+TG_ditch0                     3.49175530 -1.70458677            3.2831435
+TG_junctionTyp_OTHER_         0.18417456  3.33130409            3.9875361
+TG_lightBRIGHT_SUN            1.60061029 -0.63809156           -0.1515402
+TG_lightOVERCAST             -0.01034253  1.82242182            2.6195702
+TG_motorcycle0                6.37863572  5.95410520            6.7448082
+TG_multiVehiclMULTI_VEHICLE   6.71946505  3.99797565            7.1213241
+TG_multiVehiclSINGLE_VEHICLE  5.66529717 -1.62939303            6.5023889
+TG_multiVehicl_OTHER_         5.98352266  7.08614518            7.6394207
+TG_numberOfLanes2             3.84190096  3.13045529            4.7073821
+TG_regionDescAUCKLAND         2.59123918  4.12869246            5.8324325
+TG_regionDescCANTERBURY       1.32726768  2.83099066            3.4684319
+TG_regionDescWAIKATO          2.42526363  0.85878602            2.6986062
+TG_regionDesc_OTHER_          3.20331801 -0.29901516            3.9236984
+TG_roadMarkingsCENTRE_LINE   -1.98767232  2.62954580            2.2270409
+TG_roadMarkingsNO_MARKS      -1.28620837  2.00069039            1.7129952
+TG_roadMarkingsRAISED_ISLAND  0.47152623  2.87411083            3.5344253
+TG_roadMarkings_OTHER_        2.01470661  3.17183297            3.9487907
+TG_roadWetDRY                 2.71568951  1.90792431            3.9876478
+TG_roadWetWET                 3.02834510  0.41381975            3.6864592
+TG_speedLimit50               4.22563354  4.56417835            7.2108153
+TG_speedLimit_OTHER_          2.32771363  1.02770209            3.1966097
+TG_suv_OTHER_                 3.15327862  0.76491179            3.0975850
+TG_trafficContrNIL            1.93472910 -0.28336733            1.7789038
+TG_trafficContrN_A            1.05304872  1.00750617            2.4347407
+crashSHDescriptionNo          2.18670042  0.24169723            3.4147206
+crashSHDescriptionYes         1.39276820  0.57791088            3.8901820
+darkLightDark                 1.73834633 -1.10916838            1.8150120
+darkLightLight               -0.37828339  2.09484455            3.5484568
+directionRoleDescriptioEast   0.28640606  1.69491466            2.2558136
+directionRoleDescriptioNorth  1.01789870 -0.24980504            0.7200281
+directionRoleDescriptioSouth -0.34939885  0.83089348            0.6003971
+directionRoleDescriptioWest  -1.21446809  1.33575133           -0.7646773
+flatHillFlat                  1.55381094 -0.45840236            2.4474342
+flatHillHill                  1.79416551 -0.08381271            2.3373353
+intersectionMidbIntersection  0.15648941  3.03009158            3.8779390
+intersectionMidbMid_Block     0.37625049  2.48001787            3.4153270
+roadCurvatureEasy_Curve       1.34240115 -0.11808523            2.7223470
+roadCurvatureModerate_Curve   2.76830401  1.57296701            3.9715812
+roadCurvatureStraight_Road    3.11111809  0.84979583            3.8665831
+streetLightNone               3.57272465  2.18746435            4.3898553
+streetLightOff                1.10401705  4.14096017            5.2565401
+streetLightOn                 0.15906489  1.37860143            2.6749470
+streetLightUnknown           -1.81047856  2.12029025            1.8981113
+urbanOpenroad                 5.00590356  4.01450448            6.7028905
+vanOrUtility0                 2.70240096 -1.22784536            2.5136919
+vanOrUtility1                 2.79154994  0.14021707            2.4203001
+                             MeanDecreaseGini
+IMP_crashDirectionDescrEast         0.9540364
+IMP_crashDirectionDescrNorth        1.0373352
+IMP_crashDirectionDescrSouth        3.5149362
+IMP_crashDirectionDescrWest         1.5363478
+IMP_roadLane2                      50.4591308
+PCTL_crashDistanc03_50_250          6.5458241
+PCTL_crashDistanc04_250_high      113.4864829
+TG_carStationWagon0               133.2003578
+TG_carStationWagon1                71.1850563
+TG_carStationWagon2               410.1582153
+TG_ditch0                           4.4882714
+TG_junctionTyp_OTHER_              21.0288200
+TG_lightBRIGHT_SUN                  4.2361294
+TG_lightOVERCAST                    9.6851356
+TG_motorcycle0                    245.7984642
+TG_multiVehiclMULTI_VEHICLE       372.3349088
+TG_multiVehiclSINGLE_VEHICLE       81.3414136
+TG_multiVehicl_OTHER_             346.7198094
+TG_numberOfLanes2                  29.5941169
+TG_regionDescAUCKLAND             102.0801994
+TG_regionDescCANTERBURY            11.0349332
+TG_regionDescWAIKATO                3.7074913
+TG_regionDesc_OTHER_               26.4971680
+TG_roadMarkingsCENTRE_LINE          2.9340028
+TG_roadMarkingsNO_MARKS             2.8890810
+TG_roadMarkingsRAISED_ISLAND        5.4776983
+TG_roadMarkings_OTHER_             12.9131874
+TG_roadWetDRY                      10.5896737
+TG_roadWetWET                      12.5502846
+TG_speedLimit50                   221.3557456
+TG_speedLimit_OTHER_                7.4858646
+TG_suv_OTHER_                       5.0914080
+TG_trafficContrNIL                  3.7015569
+TG_trafficContrN_A                 10.1843270
+crashSHDescriptionNo               27.3277265
+crashSHDescriptionYes              27.3432999
+darkLightDark                       6.6789487
+darkLightLight                      6.1679630
+directionRoleDescriptioEast         0.9321763
+directionRoleDescriptioNorth        0.8728266
+directionRoleDescriptioSouth        0.6279110
+directionRoleDescriptioWest         0.6715177
+flatHillFlat                        8.9084797
+flatHillHill                        8.5974153
+intersectionMidbIntersection       31.1393905
+intersectionMidbMid_Block          24.9982361
+roadCurvatureEasy_Curve             8.0004631
+roadCurvatureModerate_Curve        31.1346128
+roadCurvatureStraight_Road         54.1784583
+streetLightNone                    58.4153772
+streetLightOff                     60.6165642
+streetLightOn                       6.5882936
+streetLightUnknown                  7.3805108
+urbanOpenroad                     232.0205374
+vanOrUtility0                       6.6903610
+vanOrUtility1                       9.9971313
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

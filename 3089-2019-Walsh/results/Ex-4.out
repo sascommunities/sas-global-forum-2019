@@ -1,0 +1,288 @@
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # Exercise 4a enter the name of the package
+> # load the swat package so that R can interface with CAS
+> library(swat)
+NOTE: The extension module for binary protocol support is not available.
+      Only the CAS REST interface can be used.
+SWAT 1.3.0
+> options(cas.trace.actions = FALSE)
+> options(cas.print.messages = TRUE)
+> 
+> # location where the data is stored
+> setwd("D:/Workshop/HOW")
+> #### load data ####
+> # Exercise 4a - connecting to CAS
+> conn2cas <- CAS("example-server", port_number, protocol="http")
+NOTE: Connecting to CAS and generating CAS action functions for loaded
+      action sets...
+NOTE: To generate the functions with signatures (for tab completion), set 
+      options(cas.gen.function.sig=TRUE).
+> 
+> # load dataset into memory
+> castbl_cas_crash <- cas.read.csv(conn2cas, "cas_crash.csv")
+NOTE: Cloud Analytic Services made the uploaded file available as table CAS_CRASH in caslib CASUSER(student).
+> 
+> # in some functions you need to pass the name of the table object not the object itself
+> table_name_str <- 'cas_crash'
+> #### prep data ####
+> # Exercise 4b
+> listActionSets(conn2cas)$actionset
+ [1] "accessControl"  "accessControl"  "builtins"       "configuration"  "dataPreprocess" "dataStep"       "percentile"    
+ [8] "search"         "session"        "sessionProp"    "simple"         "table"         
+> loadActionSet(conn2cas, 'decisionTree')
+NOTE: Added action set 'decisionTree'.
+NOTE: Information for action set 'decisionTree':
+NOTE:    decisionTree
+NOTE:       dtreeTrain - Trains a decision tree
+NOTE:       dtreeScore - Scores a table using a decision tree model
+NOTE:       dtreeSplit - Splits decision tree nodes
+NOTE:       dtreePrune - Prune a decision tree
+NOTE:       dtreeMerge - Merges decision tree nodes
+NOTE:       dtreeCode - Generates DATA step scoring code from a decision tree model
+NOTE:       forestTrain - Trains a forest
+NOTE:       forestScore - Scores a table using a forest model
+NOTE:       forestCode - Generates DATA step scoring code from a forest model
+NOTE:       gbtreeTrain - Trains a gradient boosting tree
+NOTE:       gbtreeScore - Scores a table using a gradient boosting tree model
+NOTE:       gbtreeCode - Generates DATA step scoring code from a gradient boosting tree model
+> 
+> # load the action sets for sampling and imputation respectively
+> loadActionSet(conn2cas, 'sampling')
+NOTE: Added action set 'sampling'.
+NOTE: Information for action set 'sampling':
+NOTE:    sampling
+NOTE:       srs -  Samples a proportion of data from the input table or partitions the data into no more than three portions
+NOTE:       stratified - Samples a proportion of data or partitions the data into no more than three portions within each stratum
+NOTE:       oversample - Samples a user-specified proportion of data from the event level and adjusts the ratio between rare events and non-rare events to a user-specified ratio
+NOTE:       kfold - K-fold partitioning.
+> loadActionSet(conn2cas, 'dataPreprocess')
+NOTE: Added action set 'dataPreprocess'.
+NOTE: Information for action set 'dataPreprocess':
+NOTE:    dataPreprocess
+NOTE:       rustats - Computes robust univariate statistics, centralized moments, quantiles, and frequency distribution statistics
+NOTE:       impute - Performs data matrix (variable) imputation
+NOTE:       outlier - Performs outlier detection and treatment
+NOTE:       binning - Performs unsupervised variable discretization
+NOTE:       discretize - Performs supervised and unsupervised variable discretization
+NOTE:       catTrans - Groups and encodes categorical variables using unsupervised and supervised grouping techniques
+NOTE:       histogram - Generates histogram bins and simple bin-based statistics for numeric variables
+NOTE:       transform - Performs pipelined variable imputation, outlier detection and treatment, functional transformation, binning, and robust univariate statistics to evaluate the quality of the transformation
+NOTE:       kde - Computes kernel density estimation
+NOTE:       highCardinality - Performs randomized cardinality estimation
+> 
+> # create a set of variables to easily refer to the different types of variable roles
+> # identify the name of the column to help us distinguish the different types of variables
+> colinfo <- cas.table.columnInfo(conn2cas, table = table_name_str)$ColumnInfo
+> head(colinfo)
+        Column ID    Type RawLength FormattedLength NFL NFD
+1     OBJECTID  1  double         8              12   0   0
+2 multiVehicle  2 varchar        31              31   0   0
+3      holiday  3 varchar        18              18   0   0
+4   regionDesc  4 varchar        18              18   0   0
+5      tlaName  5 varchar        30              30   0   0
+6    crashRPRS  6  double         8              12   0   0
+> # Target variable is the last column 
+> target_var <- colinfo$Column[ncol(castbl_cas_crash)] 
+> 
+> # all the variables to model, make sure the id and target are not inputs to the model
+> input_vars <- colinfo$Column[-c(1, ncol(castbl_cas_crash))] 
+> 
+> # all the categorical variables
+> # note that searching for a varchar type here has its limits if some of
+> # the categorical variables are labelled 1, 2, 3, 4
+> nominal_vars <- c(target_var, subset(colinfo, Type == 'varchar')$Column)
+> 
+> # names for the imputed vars which we will prefix with IMP_ downstream
+> input_vars_imp <- paste0('IMP_', input_vars)
+> nominal_vars_imp <- c(target_var, paste0('IMP_', nominal_vars[-1]))
+> # partition data into train, validation and test
+> cas.sampling.srs(conn2cas, 
++                  table    = table_name_str, 
++                  samppct  = 70, 
++                  samppct2 = 20,
++                  SEED     = 12345, 
++                  partind  = TRUE,
++                  output   = list(casOut = list(name = table_name_str, replace = TRUE),
++                                  copyVars = 'ALL')
++ )
+NOTE: Using SEED=12345 for sampling.
+$`OutputCasTables`
+            casLib      Name Label   Rows Columns
+1 CASUSER(student) cas_crash       665847      75
+
+$SRSFreq
+    NObs NSamp1 NSamp2
+1 665847 466093 133169
+
+$outputSize
+$outputSize$`outputNObs`
+[1] 665847
+
+$outputSize$outputNVars
+[1] 75
+
+
+> # impute missing values
+> cas.dataPreprocess.impute(castbl_cas_crash,
++                              outVarsNamePrefix = 'IMP',
++                              methodContinuous = 'MEDIAN',
++                              methodNominal = 'MODE',
++                              inputs = colnames(castbl_cas_crash)[-ncol(castbl_cas_crash)],
++                              copyAllVars = TRUE,
++                              casOut = list(name = table_name_str, replace = TRUE)
++ )
+$`ImputeInfo`
+                      Variable ImputeTech                       ResultVar      N  NMiss ImputedValueContinuous ImputedValueNominal
+1                     OBJECTID     Median                    IMP_OBJECTID 665847      0                 332924                    
+2                 multiVehicle       Mode                IMP_multiVehicle 665847      0                    NaN       Multi vehicle
+3                      holiday       Mode                     IMP_holiday 665847      0                    NaN                None
+4                   regionDesc       Mode                  IMP_regionDesc 665847      0                    NaN            Auckland
+5                      tlaName       Mode                     IMP_tlaName 665847      0                    NaN            Auckland
+6                    crashRPRS     Median                   IMP_crashRPRS 665847      0                      0                    
+7                 intersection       Mode                IMP_intersection 665847      0                    NaN             Unknown
+8                 junctionType       Mode                IMP_junctionType 665847      0                    NaN             Unknown
+9           cornerRoadSideRoad     Median          IMP_cornerRoadSideRoad 665847      0                      1                    
+10   crashDirectionDescription       Mode   IMP_crashDirectionDescription 414881 250966                    NaN               South
+11               crashDistance     Median               IMP_crashDistance 665847      0                     25                    
+12 crashRPDirectionDescription       Mode IMP_crashRPDirectionDescription 665847      0                    NaN                   0
+13    directionRoleDescription       Mode    IMP_directionRoleDescription 665847      0                    NaN               North
+14         crashRPDisplacement     Median         IMP_crashRPDisplacement 665847      0                      0                    
+15          crashSHDescription       Mode          IMP_crashSHDescription 665847      0                    NaN                  No
+16                   crashRPSH       Mode                   IMP_crashRPSH 665847      0                    NaN                   0
+17      crashRPNewsDescription       Mode      IMP_crashRPNewsDescription 665847      0                    NaN                   0
+18        intersectionMidblock       Mode        IMP_intersectionMidblock 665847      0                    NaN           Mid Block
+19                    flatHill       Mode                    IMP_flatHill 665847      0                    NaN                Flat
+20               roadCharacter       Mode               IMP_roadCharacter 665847      0                    NaN             Unknown
+21               roadCurvature       Mode               IMP_roadCurvature 665847      0                    NaN       Straight Road
+22                    roadLane     Median                    IMP_roadLane 655311  10536                      2                    
+23                roadMarkings       Mode                IMP_roadMarkings 665847      0                    NaN         Centre Line
+24                 roadSurface       Mode                 IMP_roadSurface 665847      0                    NaN              Sealed
+25                     roadWet       Mode                     IMP_roadWet 665847      0                    NaN                 Dry
+26               numberOfLanes     Median               IMP_numberOfLanes 665847      0                      2                    
+27              trafficControl       Mode              IMP_trafficControl 665847      0                    NaN                 Nil
+28                  speedLimit     Median                  IMP_speedLimit 665834     13                     50                    
+29               advisorySpeed     Median               IMP_advisorySpeed 665847      0                      0                    
+30         temporarySpeedLimit     Median         IMP_temporarySpeedLimit 665847      0                      0                    
+31                       urban       Mode                       IMP_urban 665847      0                    NaN               Urban
+32                   darkLight       Mode                   IMP_darkLight 665847      0                    NaN               Light
+33                       light       Mode                       IMP_light 665847      0                    NaN          Bright Sun
+34                 streetLight       Mode                 IMP_streetLight 665847      0                    NaN             Unknown
+35                    weatherA       Mode                    IMP_weatherA 665847      0                    NaN                Fine
+36                    weatherB       Mode                    IMP_weatherB 665847      0                    NaN             Unknown
+37                     animals     Median                     IMP_animals 665847      0                      0                    
+38                      bridge     Median                      IMP_bridge 665847      0                      0                    
+39                   cliffBank     Median                   IMP_cliffBank 665847      0                      0                    
+40                      debris     Median                      IMP_debris 665847      0                      0                    
+41                       ditch     Median                       IMP_ditch 665847      0                      0                    
+42                       fence     Median                       IMP_fence 665847      0                      0                    
+43                   guardRail     Median                   IMP_guardRail 665847      0                      0                    
+44               houseBuilding     Median               IMP_houseBuilding 665847      0                      0                    
+45                        kerb     Median                        IMP_kerb 665847      0                      0                    
+46       objectThrownOrDropped     Median       IMP_objectThrownOrDropped 665847      0                      0                    
+47                       other     Median                       IMP_other 665847      0                      0                    
+48                    overBank     Median                    IMP_overBank 665847      0                      0                    
+49               parkedVehicle     Median               IMP_parkedVehicle 665847      0                      0                    
+50                 phoneBoxEtc     Median                 IMP_phoneBoxEtc 665847      0                      0                    
+51                  postOrPole     Median                  IMP_postOrPole 665847      0                      0                    
+52                   roadworks     Median                   IMP_roadworks 665847      0                      0                    
+53                   slipFlood     Median                   IMP_slipFlood 665847      0                      0                    
+54                 strayAnimal     Median                 IMP_strayAnimal 665847      0                      0                    
+55               trafficIsland     Median               IMP_trafficIsland 665847      0                      0                    
+56                 trafficSign     Median                 IMP_trafficSign 665847      0                      0                    
+57                       train     Median                       IMP_train 665847      0                      0                    
+58                        tree     Median                        IMP_tree 665847      0                      0                    
+59                     vehicle     Median                     IMP_vehicle 665847      0                      0                    
+60                  waterRiver     Median                  IMP_waterRiver 665847      0                      0                    
+61                     bicycle     Median                     IMP_bicycle 665847      0                      0                    
+62                         bus     Median                         IMP_bus 665847      0                      0                    
+63             carStationWagon     Median             IMP_carStationWagon 665847      0                      1                    
+64                       moped     Median                       IMP_moped 665847      0                      0                    
+65                  motorcycle     Median                  IMP_motorcycle 665847      0                      0                    
+66            otherVehicleType     Median            IMP_otherVehicleType 665847      0                      0                    
+67                   schoolBus     Median                   IMP_schoolBus 665847      0                      0                    
+68                         suv     Median                         IMP_suv 665847      0                      0                    
+69                        taxi     Median                        IMP_taxi 665847      0                      0                    
+70                       truck     Median                       IMP_truck 665847      0                      0                    
+71          unknownVehicleType     Median          IMP_unknownVehicleType 665847      0                      0                    
+72                vanOrUtility     Median                IMP_vanOrUtility 665847      0                      0                    
+73                  Pedestrian     Median                  IMP_Pedestrian 665847      0                      0                    
+
+$OutputCasTables
+            casLib      Name   Rows Columns
+1 CASUSER(student) cas_crash 665847     148
+
+> #### create model ####
+> # Exercise 4c
+> cas.decisionTree.forestTrain(conn2cas,
++                              table    = list(name = table_name_str, where = '_PartInd_ = 1'),
++                              target   = target_var,
++                              inputs   = input_vars,
++                              nominals = nominal_vars,
++                              nTree    = 100,
++                              casOut   = list(name = 'random_forest_model', replace = TRUE)
++ )
+$`ModelInfo`
+                              Descr        Value
+1                   Number of Trees    100.00000
+2  Number of Selected Variables (M)      9.00000
+3                Random Number Seed      0.00000
+4          Bootstrap Percentage (%)     63.21206
+5                    Number of Bins     20.00000
+6               Number of Variables     72.00000
+7      Confidence Level for Pruning      0.25000
+8          Max Number of Tree Nodes     43.00000
+9          Min Number of Tree Nodes     13.00000
+10           Max Number of Branches      2.00000
+11           Min Number of Branches      2.00000
+12             Max Number of Levels      6.00000
+13             Min Number of Levels      6.00000
+14             Max Number of Leaves     22.00000
+15             Min Number of Leaves      7.00000
+16           Maximum Size of Leaves 294574.00000
+17           Minimum Size of Leaves      5.00000
+18               Out-of-Bag MCR (%)          NaN
+
+$OutputCasTables
+            casLib                Name Rows Columns
+1 CASUSER(student) random_forest_model 2696     215
+
+> #### analyse R data frame vs CAS object ####
+> # Exercise 4d
+> # bring the data to the client so that you can use packages like ggplot2 and xgboost
+> cas_crash_df <- to.casDataFrame(castbl_cas_crash)
+> 
+> # check the class types of each object
+> class(castbl_cas_crash)
+[1] "CASTable"
+attr(,"package")
+[1] "swat"
+> class(cas_crash_df )
+[1] "casDataFrame"
+attr(,"package")
+[1] "swat"
+> 
+> # check how many  of the rows came through to the client vs how many are in the CAS table object
+> dim(castbl_cas_crash)
+[1] 665847     74
+> dim(cas_crash_df)
+[1] 32768    74
+> #### tidy up ####
+> 
+> # disconnect from CAS
+> cas.session.endSession(conn2cas)
+list()
