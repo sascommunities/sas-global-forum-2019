@@ -86,7 +86,7 @@
       proc datasets lib= work noprint;
            delete tmpy_: ;
            delete tmpz_: ;
-      run;
+      quit;
 
 %mend;
 
