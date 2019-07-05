@@ -91,11 +91,25 @@
 %mend;
 
 
+%macro ident_ln_ds();
+    data _null_;
+        /** added quick if test to check value of inds **/
+        /** allowing user to enter in dataset name     **/
+        /** that has either no lib or a lib name       **/
+        dot_position=indexc("&inds",'.');
+        if dot_position ge 1 then do;
+            src_scan=scan("&inds",2,'.');
+            call symputx('src',src_scan);
+        end;
+        if dot_position lt 1 then do;
+            src_scan=scan("&inds",1,'.');
+            call symputx('src',src_scan);
+        end;
+    run;
+%mend;
+
 %macro dsreport1(inds=);
-         data _null_;
-             src_scan=scan("&inds",2,'.');
-             call symput('src',src_scan);
-         run;
+         %ident_ln_ds();
 
          ods proclabel="Contents of file: &src";
          /* only keep certain fields from contents */
@@ -106,7 +120,8 @@
                              nobs
                              crdate
                              idxusage
-                             sorted
+                             idxcount
+                             sorted:
                              name
                              type
                              length
@@ -119,12 +134,12 @@
                               varnum
                               nobs
                               idxusage
-                              sorted
+                              sorted_status
                               crdate
                               rename=(varnum  =data_set_max_vars
                                       nobs    =data_set_num_obs
                                       idxusage=data_set_index_usage
-                                      sorted  =data_set_sorted_flag
+                                      sorted_status=data_set_sorted_flag
                                       crdate  =data_set_create_date
                                       ))
               work.tmpz_table_details
@@ -133,17 +148,58 @@
                               length
                               name
                               varnum
+                              idxusage
+                              sortedby
                               rename=(name  =field_name
                                       length=field_byte_length
                                       varnum=field_seq
+                                      idxusage=field_index_status
+                                      sortedby=field_sort_seq
                                       ));
               set work.tmpz_table_details;
 
-             if type='1' then length=.;
-             if type='1' then field_type='Num';
-             if type='2' then field_type='Chr';
+             if type=1 then length=.;
+             if type=1 then field_type='Num';
+             if type=2 then field_type='Chr';
              drop type;
-              name=upcase(name);
+             name=upcase(name);
+             length sorted_status $15.;
+             sorted_status='No Sort';
+             if sorted=1 then sorted_status='SORTED';
+             drop sorted;
+             if idxusage in ("NONE") then do;
+                 idxusage=' ';
+             end;
+         run;
+
+
+         data _null_;
+             /** default macro vars as precaution **/
+             trigger_idx_facts=0;
+             call symputx('tmp_flg_idx',trigger_idx_facts);
+             trigger_srt_facts=0;
+             call symputx('tmp_flg_srt',trigger_srt_facts);
+         run;
+
+         data _null_;
+             set work.tmpz_table_facts;
+             where data_set_index_usage in:("s","S","c","C","u","U");
+             trigger_idx_facts=1;
+             call symputx('tmp_flg_idx',trigger_idx_facts);
+             if _n_ gt 1 then stop;
+         run;
+
+         data _null_;
+             set work.tmpz_table_details;
+             where field_sort_seq ge 1 ;
+             trigger_srt_facts=1;
+             call symputx('tmp_flg_srt',trigger_srt_facts);
+             if _n_ gt 1 then stop;
+         run;
+
+
+         proc sort data=work.tmpz_table_details ;
+         by data_set_name field_type field_byte_length field_name;
          run;
 
          /* get totals from content details on data */
@@ -151,34 +207,57 @@
          by data_set_name descending data_set_max_vars;
          run;
 
-         /* rename fields to something client can understand */
-         proc sort data=work.tmpz_table_facts nodupkey;
-         by data_set_name ;
-         run;
-
          /* print totals for the table */
          ods proclabel="Details of rows in file: &src";
-         proc print data=work.tmpz_table_facts;
-         title "data table facts: &src";
+         proc print data=work.tmpz_table_facts (obs=1);
+         title1 "data table facts: &src";
+         title2 "no index present - no sort";
+             %if &tmp_flg_idx=1 %then %do;
+                 title2 "uses indexing";
+             %end;
+             %if &tmp_flg_srt=1 %then %do;
+                 title2 "sorted";
+             %end;
+
+             var data_set_name data_set_max_vars data_set_num_obs data_set_create_date;
          run;
          title;
-
-         proc sort data=work.tmpz_table_details ;
-         by data_set_name field_type field_byte_length field_name;
-         run;
 
          ods proclabel="Details of columns file: &src";
          proc print data=work.tmpz_table_details width=uniform;
-         title "data table facts: &src";
+         title1 "data table facts: &src";
+         title2 "no index present - no sort";
+             %if &tmp_flg_idx=1 %then %do;
+                 title2 "uses indexing";
+             %end;
+             %if &tmp_flg_srt=1 %then %do;
+                 title2 "sorted";
+             %end;
+             var data_set_name field_name field_byte_length field_seq field_type;
+             %if &tmp_flg_idx=1 %then %do;
+                 var field_index_status;
+             %end;
+             %if &tmp_flg_srt=1 %then %do;
+                 var field_sort_seq ;
+             %end;
          run;
          title;
 
-         /* print 30 rows of data for sample */
+         /* print 10 rows of data for sample */
          ods proclabel="Sample of Rows: &src";
          proc print data=&inds (obs=10) width=uniform;
-         title "Sample Output - &src set to 10 rows if they exist";
+         title1 "Sample Output - &src set to 10 rows if they exist";
+         title2 "no index present - no sort";
+             %if &tmp_flg_idx=1 %then %do;
+                 title2 "uses indexing";
+             %end;
+             %if &tmp_flg_srt=1 %then %do;
+                 title2 "sorted";
+             %end;
          run;
          title;
+
+         %delworksrc();
 
 %mend;  ****************** end macro;
 
@@ -188,12 +267,9 @@
 
 /* this will check fields like -id- to see if they are unique or not */
 %macro field_stats(inds=,vartochk=);
-      data _null_;
-           src_scan=scan("&inds",2,'.');
-           call symput('src',src_scan);
-      run;
 
-          %mkworktsrc;
+      %ident_ln_ds();
+      %mkworktsrc;
 
       %let dschk_cnt = %sysfunc(countw(&vartochk, ' '));
       %do ggg = 1 %to &dschk_cnt;
@@ -226,7 +302,7 @@
                 drop validate_unique;
           run;
 
-              ods proclabel="Validation of &local_var in: &src";
+          ods proclabel="Validation of &local_var in: &src";
           proc print data=work.tmpy_&sysjobid  width=uniform;
               title1 "validating: &local_var  variable  in: &src - &inds";
               title2 "is field unique check";
@@ -235,7 +311,7 @@
           title;
 
       %end; *** end of do loop;
-          %delworksrc();
+      %delworksrc();
 
 %mend;  ******************** end macro;
 
@@ -243,12 +319,9 @@
 
 
 %macro field_top15(inds=,vartochk=);
-     data _null_;
-          src_scan=scan("&inds",2,'.');
-          call symput('src',src_scan);
-     run;
 
-         %mkworktsrc;
+     %ident_ln_ds();
+     %mkworktsrc;
 
      %let dschk_cnt = %sysfunc(countw(&vartochk, ' '));
      %do ggg = 1 %to &dschk_cnt;
@@ -261,7 +334,6 @@
              table &local_var  /nocol norow  out=work.tmpy_&sysjobid  ;
          run;
          title;
-
 
          data work.tmpy_&sysjobid ;
              set work.tmpy_&sysjobid  (obs=15);
@@ -288,20 +360,16 @@
 
      %end; *** end of do loop;
 
-         %delworksrc();
-
+     %delworksrc();
 
 %mend;  ****************** end macro;
 
 
 
 %macro field_freq(inds=,vartochk=);
-         data _null_;
-             src_scan=scan("&inds",2,'.');
-             call symput('src',src_scan);
-         run;
 
-         %mkworktsrc;
+     %ident_ln_ds();
+     %mkworktsrc;
 
      %let dschk_cnt = %sysfunc(countw(&vartochk, ' '));
      %do ggg = 1 %to &dschk_cnt;
@@ -316,7 +384,7 @@
 
      %end; *** end of do loop;
 
-         %delworksrc();
+     %delworksrc();
 
 %mend;  *************end macro;
 
@@ -324,12 +392,9 @@
 
 
 %macro field_freqdt(inds=,vartochk=);
-         data _null_;
-             src_scan=scan("&inds",2,'.');
-             call symput('src',src_scan);
-         run;
 
-         %mkworktsrc;
+     %ident_ln_ds();
+     %mkworktsrc;
 
      %let dschk_cnt = %sysfunc(countw(&vartochk, ' '));
      %do ggg = 1 %to &dschk_cnt;
@@ -345,7 +410,7 @@
 
      %end; *** end of do loop;
 
-         %delworksrc();
+     %delworksrc();
 
 %mend;  *************end macro;
 
@@ -354,30 +419,30 @@
 
 /* this will check amount fields to see get basic info on them */
 %macro field_numbers(inds=,vartochk=);
-      data _null_;
-           src_scan=scan("&inds",2,'.');
-           call symput('src',src_scan);
-      run;
+      %delworksrc();
+      %ident_ln_ds();
 
-          %mkworktsrc;
+      %mkworktsrc;
 
       %let dschk_cnt = %sysfunc(countw(&vartochk, ' '));
       %do ggg = 1 %to &dschk_cnt;
           %let local_var = %scan(&vartochk, &ggg);
 
-
-          data work.tmpy_&sysjobid;
+          data work.tmpy_&sysjobid._&ggg;
               set work.tmpz_&sysjobid  (keep= &local_var);
               length validation $35.;
               validation="&local_var";
               audit=&local_var;
               drop &local_var;
+              length data_set_name $100.;
+              data_set_name="&inds";
           run;
 
-          proc summary data=work.tmpy_&sysjobid  nway noprint;
+          proc summary data=work.tmpy_&sysjobid._&ggg  nway noprint;
+              class data_set_name;
               class validation;
               var   audit;
-              output out=work.tmpy_&sysjobid  (drop=_type_ _freq_)
+              output out=work.tmpy_&sysjobid.sum_&ggg  (drop=_type_ _freq_)
                            n=cnt_distinct_values
                            min(audit) =min
                            max(audit) =max
@@ -390,19 +455,19 @@
                            p90(audit) =p90
                            ;
           run;
-
-          ods proclabel="Validation of &local_var in: &src";
-          proc print data=work.tmpy_&sysjobid  width=uniform;
-              title1 "validating: &local_var  variable  in: &src - &inds";
-              title2 "numeric field stats";
-
-          run;
-          title;
-
-
       %end; *** end of do loop;
 
-          %delworksrc();
+          data work.tmpy_&sysjobid.ttl;
+              set  work.tmpy_&sysjobid.sum_:;
+          run;
+
+      ods proclabel="validating numeric fields in: &inds";
+      proc print data=work.tmpy_&sysjobid.ttl  width=uniform;
+          title1 "validating numeric fields in: &inds";
+      run;
+      title;
+
+      %delworksrc();
 
 %mend; ************ end macro;
 
