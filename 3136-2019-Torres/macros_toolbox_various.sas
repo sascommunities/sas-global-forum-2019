@@ -37,6 +37,19 @@
 *        field_numbers
 *
 *******************************************************************
+* note about other macros
+* there are other smaller macros here in this code
+* these are meant to help with clean up before or after macros start
+* for the most part consider all the macros in this code to be 
+* dependent and/or rely on each other
+*
+*******************************************************************
+* other considerations and or WARNINGS
+* DO NOT RUN THIS CODE on VERY LARGE DATA and expect great performance
+* read the original sas paper presented with this code for background
+* this code is fast/nimble with most small to large data
+*
+*******************************************************************
 * macro dsreport1(inds=)
 *       performs proc contents on the data and prints sample 10
 *       rows (first 10) the contents information is condensed
@@ -64,8 +77,14 @@
 *       basic info on them like
 *       min max mean p10 p50 etc
 *       with just a few rows of output
+******************************************************************
+* macro code_example()
+*       this code is meant to mask values in cells with LT the key
+*       value you set. In this case 10 or less.
+*       this way you can easily toggle that masking on/off 
+*       this is a useful technique on the CMS VRDC read the SGF paper
+*
 ******************************************************************/
-
 
 %macro mkworktsrc();
          /* keep data for use in freq and counts */
