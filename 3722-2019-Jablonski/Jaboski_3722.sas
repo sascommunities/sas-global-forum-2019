@@ -476,13 +476,13 @@ run;
 
 /*
 Further examples can be found at:
-http://www.mini.pw.edu.pl/~bjablons/SASpublic/
+http://pages.mini.pw.edu.pl/~jablonskib/SASpublic/
 
 e.g. this file (OR-condition-in-WHERE-clause-with-INDEX-a-code-from-the-paper-3722-2019.sas)
 
-http://www.mini.pw.edu.pl/~bjablons/SASpublic/Countries.sas
+http://pages.mini.pw.edu.pl/~jablonskib/SASpublic/Countries.sas
 
-http://www.mini.pw.edu.pl/~bjablons/SASpublic/OR-condition-in-WHERE-clause-with-INDEX-an-EXTENDED VERSION
+https://pages.mini.pw.edu.pl/~jablonskib/SASpublic/OR-condition-in-WHERE-clause-with-INDEX-an-EXTENDED%20VERSION.sas
 
-http://www.mini.pw.edu.pl/~bjablons/SASpublic/OR-condition-in-WHERE-clause-with-INDEX-a-test-with-SPDE.sas
+http://pages.mini.pw.edu.pl/~jablonskib/SASpublic/OR-condition-in-WHERE-clause-with-INDEX-a-test-with-SPDE.sas
 */
